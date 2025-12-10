@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>interact club</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a.active {
+            color: var(--primary);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+        
+        .page {
+            display: none;
+            padding: 60px 0;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Home Page */
+        .hero {
+            text-align: center;
+            padding: 40px 0 60px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--gray);
+        }
+        
+        .notices {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            margin-top: 30px;
+        }
+        
+        .notices h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .notice-item {
+            padding: 15px;
+            background-color: #f0f9ff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .notice-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .notice-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        /* About Page */
+        .mission-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .mission-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+        
+        .mission-card h3 {
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mission-card h3 i {
+            color: var(--accent);
+        }
+        
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .value-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-icon {
+            background-color: #dbeafe;
+            color: var(--primary);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+        }
+        
+        /* Events Calendar */
+        .calendar-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .calendar-nav button {
+            background-color: var(--light-gray);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .calendar-nav button:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        
+        .calendar-day {
+            padding: 10px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--gray);
+            background-color: #f8fafc;
+            border-radius: 8px;
+        }
+        
+        .calendar-date {
+            padding: 15px 10px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .calendar-date:hover {
+            background-color: #f0f9ff;
+        }
+        
+        .calendar-date.has-event {
+            background-color: #dbeafe;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .calendar-date.today {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .events-list {
+            margin-top: 40px;
+        }
+        
+        .event-item {
+            display: flex;
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .event-date {
+            background-color: #dbeafe;
+            color: var(--primary);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 100px;
+            margin-right: 20px;
+        }
+        
+        .event-day {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .event-month {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        /* Contact Page */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            background-color: #dbeafe;
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .contact-form {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Join Page */
+        .join-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .join-info {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+        
+        .benefits-list {
+            margin-top: 20px;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+        
+        .join-form {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Resources Page */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-icon {
+            background-color: #dbeafe;
+            color: var(--primary);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .resource-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        /* Gallery Page */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            height: 200px;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Blog Page */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-content {
+            padding: 25px;
+        }
+        
+        .blog-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        /* FAQs Page */
+        .faq-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 20px;
+        }
+        
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .faq-question h3 {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+        
+        .faq-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer.open {
+            max-height: 300px;
+            margin-top: 15px;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #6d28d9;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        
+        .btn-accent:hover {
+            background-color: #d97706;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo span {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+        }
+        
+        .footer-heading {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .mission-section, .contact-container, .join-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                display: none;
+                flex-direction: column;
+                z-index: 999;
+            }
+            
+            .mobile-menu.active {
+                display: flex;
+            }
+            
+            .mobile-menu a {
+                padding: 15px;
+                border-bottom: 1px solid var(--light-gray);
+                text-decoration: none;
+                color: var(--dark);
+                font-weight: 500;
+            }
+            
+            .mobile-menu a.active {
+                color: var(--primary);
+                background-color: #f0f9ff;
+            }
+            
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                font-size: 0.8rem;
+            }
+            
+            .calendar-date {
+                padding: 10px 5px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .calendar-grid {
+                gap: 5px;
+            }
+            
+            .calendar-date {
+                padding: 8px 3px;
+                font-size: 0.8rem;
+            }
+            
+            .event-item {
+                flex-direction: column;
+            }
+            
+            .event-date {
+                margin-right: 0;
+                margin-bottom: 15px;
+                min-width: auto;
+            }
+            
+            .blog-grid, .resources-grid, .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="logo-text">interact<span>Innovators</span></div>
+            </div>
+            
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#events" class="nav-link">Events</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#join" class="nav-link">Join</a></li>
+                    <li><a href="#resources" class="nav-link">Resources</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#blog" class="nav-link">Blog</a></li>
+                    <li><a href="#faqs" class="nav-link">FAQs</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#home" class="mobile-nav-link active">Home</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#events" class="mobile-nav-link">Events</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+            <a href="#join" class="mobile-nav-link">Join</a>
+            <a href="#resources" class="mobile-nav-link">Resources</a>
+            <a href="#gallery" class="mobile-nav-link">Gallery</a>
+            <a href="#blog" class="mobile-nav-link">Blog</a>
+            <a href="#faqs" class="mobile-nav-link">FAQs</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="container">
+                <div class="hero">
+                    <h1>Interact club</h1>
+                    <p>Where creativity meets interaction. We're a community of students passionate about</p>
+                    <div class="cta-buttons">
+                        <a href="#join" class="btn">Join Now</a>
+                        <a href="#about" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="notices">
+                    <h2><i class="fas fa-bullhorn"></i> Important Notices</h2>
+                    <div class="notice-item">
+                        <div class="notice-date">September 15, 2025</div>
+                        <p><strong>First Meeting of the Year:</strong> Join us this Friday at 3:30 PM in the Science Building, Room 205 for our kickoff meeting. Pizza will be served!</p>
+                    </div>
+                    <div class="notice-item">
+                        <div class="notice-date">September 20, 2025</div>
+                        <p><strong>Robotics Competition Team:</strong> Signups for the regional robotics competition are now open. Deadline is October 1st.</p>
+                    </div>
+                    <div class="notice-item">
+                        <div class="notice-date">September 25, 2025</div>
+                        <p><strong>Guest Speaker:</strong> Tech industry leader Maria Chen will be speaking about AI ethics on October 10th. RSVP required.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="container">
+                <h1>About Us</h1>
+                <p class="section-intro">The interact Club is a student-led organization dedicated to exploring technology, innovation, and creative problem-solving.</p>
+                
+                <div class="mission-section">
+                    <div class="mission-card">
+                        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                        <p>To empower students with technical skills, foster innovation, and create a collaborative environment where ideas become reality through technology.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                        <p>To cultivate the next generation of tech leaders who will use their skills to solve real-world problems and make a positive impact in our community.</p>
+                    </div>
+                </div>
+                
+                <h2>What Makes Us Unique</h2>
+                <div class="values">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Inclusive Community</h3>
+                        <p>We welcome students of all skill levels, from beginners to advanced coders.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Hands-On Learning</h3>
+                        <p>Learn by doing with practical projects, workshops, and competitions.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Creative Freedom</h3>
+                        <p>Explore your own tech interests and work on passion projects.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Industry Connections</h3>
+                        <p>Connect with tech professionals through guest speakers and field trips.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Calendar Page -->
+        <section id="events" class="page">
+            <div class="container">
+                <h1>Events Calendar</h1>
+                <p>Stay updated on all club meetings, workshops, and special events.</p>
+                
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <h2 id="current-month">September 2025</h2>
+                        <div class="calendar-nav">
+                            <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                            <button id="today-btn">Today</button>
+                            <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div id="calendar" class="calendar-grid">
+                        <!-- Calendar will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="events-list">
+                    <h2>Upcoming Events</h2>
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">15</div>
+                            <div class="event-month">Sep</div>
+                        </div>
+                        <div class="event-details">
+                            <h3>Kickoff Meeting & Pizza Social</h3>
+                            <p><i class="far fa-clock"></i> 3:30 PM - 5:00 PM | <i class="fas fa-map-marker-alt"></i> Science Building, Room 205</p>
+                            <p>Join us for our first meeting of the year! We'll introduce club leadership, discuss plans for the semester, and enjoy some pizza.</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">22</div>
+                            <div class="event-month">Sep</div>
+                        </div>
+                        <div class="event-details">
+                            <h3>Intro to Python Workshop</h3>
+                            <p><i class="far fa-clock"></i> 3:30 PM - 5:30 PM | <i class="fas fa-map-marker-alt"></i> Computer Lab 3</p>
+                            <p>Perfect for beginners! Learn the basics of Python programming in this hands-on workshop. No prior experience needed.</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">10</div>
+                            <div class="event-month">Oct</div>
+                        </div>
+                        <div class="event-details">
+                            <h3>Guest Speaker: AI Ethics</h3>
+                            <p><i class="far fa-clock"></i> 4:00 PM - 5:30 PM | <i class="fas fa-map-marker-alt"></i> Auditorium</p>
+                            <p>Maria Chen, AI Ethics Lead at TechForward Inc., will discuss the ethical implications of artificial intelligence. RSVP required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>Have questions? Get in touch with our club leadership team.</p>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h2>Contact Information</h2>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Science Building, Room 205<br>St Peter's Nsambya</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>interactclub@lincolnhigh.edu</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <div>
+                                <h3>Club Advisor</h3>
+                                <p>Ms. Rodriguez<br>Science Department</p>
+                                <p>rodriguez.m@lincolnhigh.edu</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3>Meeting Times</h3>
+                                <p>Every Friday, 3:30 PM - 5:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h2>Send Us a Message</h2>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join Page -->
+        <section id="join" class="page">
+            <div class="container">
+                <h1>Join the Club</h1>
+                <p>Become a member of Interact Club and start your tech journey today!</p>
+                
+                <div class="join-container">
+                    <div class="join-info">
+                        <h2>Why Join?</h2>
+                        <p>Membership in Interact Club offers numerous benefits:</p>
+                        
+                        <ul class="benefits-list">
+                            <li>Learn valuable tech skills (coding, robotics, AI)</li>
+                            <li>Work on hands-on projects with mentorship</li>
+                            <li>Participate in competitions and hackathons</li>
+                            <li>Connect with industry professionals</li>
+                            <li>Build your portfolio for college applications</li>
+                            <li>Make friends with similar interests</li>
+                        </ul>
+                        
+                        <h3>Membership Requirements</h3>
+                        <p>Open to all St Peter's Nsambya students. No prior experience needed! Just bring your curiosity and willingness to learn.</p>
+                        
+                        <h3>Annual Membership Fee</h3>
+                        <p>$20 for the entire school year (covers materials, snacks, and event costs). Fee waivers available - see club advisor.</p>
+                    </div>
+                    
+                    <div class="join-form">
+                        <h2>Registration Form</h2>
+                        <form id="joinForm">
+                            <div class="form-group">
+                                <label for="join-name">Full Name</label>
+                                <input type="text" id="join-name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="join-email">School Email</label>
+                                <input type="email" id="join-email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="join-grade">Grade Level</label>
+                                <select id="join-grade" class="form-control" required>
+                                    <option value="">Select Grade</option>
+                                    <option value="9">Freshman (9th)</option>
+                                    <option value="10">Sophomore (10th)</option>
+                                    <option value="11">Junior (11th)</option>
+                                    <option value="12">Senior (12th)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="join-experience">Tech Experience Level</label>
+                                <select id="join-experience" class="form-control" required>
+                                    <option value="">Select Experience Level</option>
+                                    <option value="beginner">Beginner (No experience)</option>
+                                    <option value="some">Some experience</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="join-interests">Areas of Interest (Select all that apply)</label>
+                                <div>
+                                    <label><input type="checkbox" name="interests" value="coding"> Coding/Programming</label><br>
+                                    <label><input type="checkbox" name="interests" value="robotics"> Robotics</label><br>
+                                    <label><input type="checkbox" name="interests" value="ai"> Artificial Intelligence</label><br>
+                                    <label><input type="checkbox" name="interests" value="web"> Web Development</label><br>
+                                    <label><input type="checkbox" name="interests" value="game"> Game Development</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="join-questions">Questions or Comments</label>
+                                <textarea id="join-questions" class="form-control"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-accent">Submit Application</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Page -->
+        <section id="resources" class="page">
+            <div class="container">
+                <h1>Club Resources</h1>
+                <p>Download important documents, forms, and learning materials.</p>
+                
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h3>Membership Form</h3>
+                        <p>Official membership registration and permission form for new members.</p>
+                        <div class="resource-actions">
+                            <a href="#" class="btn">Download</a>
+                            <a href="#" class="btn btn-outline">Preview</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Club Handbook</h3>
+                        <p>Complete guide to club policies, expectations, and procedures.</p>
+                        <div class="resource-actions">
+                            <a href="#" class="btn">Download</a>
+                            <a href="#" class="btn btn-outline">Preview</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>Meeting Minutes</h3>
+                        <p>Archive of previous meeting minutes and decisions.</p>
+                        <div class="resource-actions">
+                            <a href="#" class="btn">View Archive</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-passport"></i>
+                        </div>
+                        <h3>Field Trip Permission Slip</h3>
+                        <p>Required form for attending club field trips and off-campus events.</p>
+                        <div class="resource-actions">
+                            <a href="#" class="btn">Download</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Learning Resources</h3>
+                        <p>Curated list of tutorials, courses, and books for tech learning.</p>
+                        <div class="resource-actions">
+                            <a href="#" class="btn">Access Resources</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Competition Guidelines</h3>
+                        <p>Rules and preparation materials for upcoming tech competitions.</p>
+                        <div class="resource-actions">
+                            <a href="#" class="btn">Download</a>
+                            <a href="#" class="btn btn-outline">Preview</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Page -->
+        <section id="gallery" class="page">
+            <div class="container">
+                <h1>Photo Gallery</h1>
+                <p>Visual highlights from our club activities and events.</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Students working on robotics project">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Coding workshop session">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w-800&q=80" alt="Group photo at competition">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="3D printing demonstration">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Guest speaker presentation">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Team building activity">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Page -->
+        <section id="blog" class="page">
+            <div class="container">
+                <h1>Club News & Updates</h1>
+                <p>Stay informed with the latest from the Interact Club.</p>
+                
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Robotics project">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date">September 5, 2025</div>
+                            <h3>Welcome Back, Innovators!</h3>
+                            <p>Exciting news for the new school year! We have lots of amazing projects and events planned. Our first meeting will be on September 15th.</p>
+                            <a href="#" class="btn btn-outline">Read More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Competition team">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date">August 20, 2025</div>
+                            <h3>Regional Robotics Competition Announced</h3>
+                            <p>The annual TechChallenge robotics competition details have been released. Start forming your teams and preparing your robots!</p>
+                            <a href="#" class="btn btn-outline">Read More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Workshop">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date">August 10, 2025</div>
+                            <h3>Summer Coding Bootcamp Success</h3>
+                            <p>Our summer coding bootcamp was a huge success with 45 students learning Python fundamentals. Thanks to all our volunteer mentors!</p>
+                            <a href="#" class="btn btn-outline">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQs Page -->
+        <section id="faqs" class="page">
+            <div class="container">
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about the interact Club.</p>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Who can join the interact Club?</h3>
+                            <button class="faq-toggle"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The club is open to all St Peter's Nsambya students regardless of grade level or prior experience with technology. We welcome beginners and experienced tech enthusiasts alike!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>When and where does the club meet?</h3>
+                            <button class="faq-toggle"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We meet every Friday from 3:30 PM to 5:00 PM in the Science Building, Room 205. Additional workshop sessions may be scheduled throughout the week.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is there a membership fee?</h3>
+                            <button class="faq-toggle"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, there is an annual membership fee of $20 to cover materials, snacks, and event costs. However, fee waivers are available for students who need financial assistance. Please contact the club advisor for more information.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What if I have no coding or tech experience?</h3>
+                            <button class="faq-toggle"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No problem! We offer beginner workshops and have mentorship programs where experienced members help newcomers. Everyone starts somewhere, and our club is the perfect place to begin your tech journey.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What kind of projects does the club work on?</h3>
+                            <button class="faq-toggle"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our projects vary based on member interests but typically include: web development, mobile apps, robotics, AI projects, game development, 3D printing, and IoT (Internet of Things) devices. Members can also propose their own passion projects!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How can I get more involved in club leadership?</h3>
+                            <button class="faq-toggle"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We elect new officers each spring for the following school year. Additionally, we have various committee positions available throughout the year. Talk to current club officers or the advisor to express your interest.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Tech<span>Innovators</span></div>
+                    <p>Empowering the next generation of tech leaders through hands-on learning, collaboration, and innovation.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-section">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#events">Events Calendar</a></li>
+                        <li><a href="#join">Join the Club</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3 class="footer-heading">Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Science Building, Room 205</li>
+                        <li><i class="fas fa-envelope"></i> interactclub@lincolnhigh.edu</li>
+                        <li><i class="fas fa-clock"></i> Fridays, 3:30 PM - 5:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 interact Club - St Peter's Nsambya. All rights reserved.</p>
+                <p>This website is student-designed and maintained.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Page navigation
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+            const pages = document.querySelectorAll('.page');
+            
+            function navigateToPage(pageId) {
+                // Hide all pages
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show selected page
+                const targetPage = document.getElementById(pageId);
+                targetPage.classList.add('active');
+                
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${pageId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.remove('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                
+                // Scroll to top of page
+                window.scrollTo(0, 0);
+            }
+            
+            // Add click event to all navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('href').substring(1);
+                    navigateToPage(pageId);
+                });
+            });
+            
+            // Calendar functionality
+            const calendar = document.getElementById('calendar');
+            const currentMonthElement = document.getElementById('current-month');
+            const prevMonthBtn = document.getElementById('prev-month');
+            const nextMonthBtn = document.getElementById('next-month');
+            const todayBtn = document.getElementById('today-btn');
+            
+            let currentDate = new Date();
+            let currentMonth = currentDate.getMonth();
+            let currentYear = currentDate.getFullYear();
+            
+            // Event dates (for demo purposes)
+            const eventDates = [
+                '2025-09-15',
+                '2025-09-22',
+                '2025-09-29',
+                '2025-10-06',
+                '2025-10-10',
+                '2025-10-13'
+            ];
+            
+            // Render calendar
+            function renderCalendar() {
+                // Clear calendar
+                calendar.innerHTML = '';
+                
+                // Set month and year in header
+                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                                   'July', 'August', 'September', 'October', 'November', 'December'];
+                currentMonthElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+                
+                // Create day headers
+                const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                dayNames.forEach(day => {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    dayElement.textContent = day;
+                    calendar.appendChild(dayElement);
+                });
+                
+                // Get first day of month and total days in month
+                const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+                const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+                
+                // Add empty cells for days before first day of month
+                for (let i = 0; i < firstDay; i++) {
+                    const emptyCell = document.createElement('div');
+                    emptyCell.className = 'calendar-date';
+                    calendar.appendChild(emptyCell);
+                }
+                
+                // Add cells for each day of the month
+                const today = new Date();
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dateCell = document.createElement('div');
+                    dateCell.className = 'calendar-date';
+                    dateCell.textContent = day;
+                    
+                    // Check if this is today
+                    if (currentYear === today.getFullYear() && 
+                        currentMonth === today.getMonth() && 
+                        day === today.getDate()) {
+                        dateCell.classList.add('today');
+                    }
+                    
+                    // Check if this date has an event
+                    const dateString = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                    if (eventDates.includes(dateString)) {
+                        dateCell.classList.add('has-event');
+                    }
+                    
+                    calendar.appendChild(dateCell);
+                }
+            }
+            
+            // Initialize calendar
+            renderCalendar();
+            
+            // Calendar navigation
+            prevMonthBtn.addEventListener('click', function() {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar();
+            });
+            
+            nextMonthBtn.addEventListener('click', function() {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar();
+            });
+            
+            todayBtn.addEventListener('click', function() {
+                currentDate = new Date();
+                currentMonth = currentDate.getMonth();
+                currentYear = currentDate.getFullYear();
+                renderCalendar();
+            });
+            
+            // FAQ toggle functionality
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+            
+            faqToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const answer = this.parentElement.nextElementSibling;
+                    answer.classList.toggle('open');
+                    
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('fa-chevron-down')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+            
+            // Form submission handling
+            const contactForm = document.getElementById('contactForm');
+            const joinForm = document.getElementById('joinForm');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            });
+            
+            joinForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your application to join the interact Club! We will contact you via email with next steps.');
+                joinForm.reset();
+            });
+            
+            // Highlight current day in calendar
+            const today = new Date();
+            const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+            
+            // Initialize with home page
+            navigateToPage('home');
+        });
+    </script>
+</body>
+</html>
