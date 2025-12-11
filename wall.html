@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St Peters SSS Nsambya - Wall of Fame</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS RESET & VARIABLES ===== */
+        :root {
+            /* School Colors */
+            --primary: #2E7D32;
+            --primary-dark: #1B5E20;
+            --primary-light: #4CAF50;
+            --accent: #8BC34A;
+            --gold: #FFD700;
+            --silver: #C0C0C0;
+            --bronze: #CD7F32;
+            
+            /* Neutrals */
+            --dark: #1A1A1A;
+            --gray-dark: #333333;
+            --gray: #666666;
+            --gray-light: #999999;
+            --light: #F8F9FA;
+            --white: #FFFFFF;
+            
+            /* Category Colors */
+            --academic: #2196F3;
+            --athletics: #F44336;
+            --arts: #9C27B0;
+            --community: #FF9800;
+            --leadership: #009688;
+            --alumni: #795548;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Merriweather', serif;
+            
+            /* Effects */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.2);
+            --transition: all 0.3s ease;
+            
+            /* Mobile-first breakpoints */
+            --mobile: 480px;
+            --tablet: 768px;
+            --desktop: 1024px;
+            --wide: 1200px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* ===== ACCESSIBILITY ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: var(--space-sm);
+            text-decoration: none;
+            z-index: 1000;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .school-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Main Navigation */
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: var(--space-md);
+        }
+        
+        .main-nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .main-nav a:hover,
+        .main-nav a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(rgba(30, 87, 33, 0.9), rgba(30, 87, 33, 0.95)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--space-md);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: var(--space-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
+            margin-top: var(--space-xl);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== WALL OF FAME CONTROLS ===== */
+        .controls-section {
+            background: var(--white);
+            padding: var(--space-lg) var(--space-md);
+            position: sticky;
+            top: 80px;
+            z-index: 90;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .controls-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .search-filter {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        
+        @media (min-width: 768px) {
+            .search-filter {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: var(--space-md);
+            padding-left: 3rem;
+            border: 2px solid var(--primary-light);
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: var(--space-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: var(--space-sm) var(--space-md);
+            background: var(--light);
+            border: 2px solid transparent;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn[data-category="academic"]:hover,
+        .filter-btn[data-category="academic"].active {
+            background: var(--academic);
+        }
+        
+        .filter-btn[data-category="athletics"]:hover,
+        .filter-btn[data-category="athletics"].active {
+            background: var(--athletics);
+        }
+        
+        .filter-btn[data-category="arts"]:hover,
+        .filter-btn[data-category="arts"].active {
+            background: var(--arts);
+        }
+        
+        .filter-btn[data-category="community"]:hover,
+        .filter-btn[data-category="community"].active {
+            background: var(--community);
+        }
+        
+        .filter-btn[data-category="leadership"]:hover,
+        .filter-btn[data-category="leadership"].active {
+            background: var(--leadership);
+        }
+        
+        .sort-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+        
+        .sort-by select {
+            padding: var(--space-sm);
+            border: 2px solid var(--primary-light);
+            border-radius: 4px;
+            font-family: var(--font-body);
+            background: white;
+        }
+        
+        .view-toggle {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .view-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            border: 2px solid var(--primary-light);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .view-btn:hover,
+        .view-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* ===== WALL OF FAME GRID ===== */
+        .wall-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-md);
+        }
+        
+        .inductees-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .inductees-grid.list-view {
+            grid-template-columns: 1fr;
+        }
+        
+        /* Inductee Card */
+        .inductee-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .inductee-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .inductee-card.list-view {
+            flex-direction: row;
+            height: 200px;
+        }
+        
+        .inductee-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .inductee-card.list-view .inductee-image {
+            height: 100%;
+            width: 200px;
+            flex-shrink: 0;
+        }
+        
+        .inductee-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .inductee-card:hover .inductee-image img {
+            transform: scale(1.05);
+        }
+        
+        .inductee-content {
+            padding: var(--space-lg);
+            flex: 1;
+        }
+        
+        .inductee-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .inductee-category {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: white;
+        }
+        
+        .category-academic { background: var(--academic); }
+        .category-athletics { background: var(--athletics); }
+        .category-arts { background: var(--arts); }
+        .category-community { background: var(--community); }
+        .category-leadership { background: var(--leadership); }
+        
+        .inductee-year {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .inductee-name {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .inductee-achievement {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+        
+        .inductee-quote {
+            font-style: italic;
+            color: var(--gray);
+            border-left: 3px solid var(--accent);
+            padding-left: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+        
+        .inductee-bio {
+            color: var(--gray-dark);
+            margin-bottom: var(--space-md);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .inductee-card.list-view .inductee-bio {
+            -webkit-line-clamp: 2;
+        }
+        
+        .inductee-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--light);
+        }
+        
+        .inductee-legacy {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .inductee-legacy i {
+            color: var(--gold);
+        }
+        
+        .view-details {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 4px;
+            font-family: var(--font-heading);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .view-details:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* ===== FEATURED INDUCTEE ===== */
+        .featured-inductee {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: var(--space-2xl);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        
+        @media (min-width: 1024px) {
+            .featured-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .featured-image {
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-details {
+            padding: var(--space-2xl);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+        }
+        
+        .featured-details h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .featured-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .featured-story {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .featured-achievements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .achievement-item i {
+            color: var(--accent);
+        }
+        
+        /* ===== NOMINATION SECTION ===== */
+        .nomination-section {
+            background: var(--white);
+            padding: var(--space-2xl) var(--space-md);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .nomination-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .nomination-container h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .nomination-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+        
+        .process-step {
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto var(--space-md);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .nominate-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .nominate-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* ===== TIMELINE VIEW ===== */
+        .timeline-section {
+            padding: var(--space-2xl) var(--space-md);
+            background: var(--light);
+        }
+        
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline-container h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: var(--space-md);
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: var(--space-2xl) var(--space-md);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-md);
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-xl);
+            margin-top: var(--space-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== MODAL FOR DETAILED VIEW ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: var(--space-md);
+            overflow-y: auto;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal {
+            background: white;
+            border-radius: 16px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .modal-content {
+            padding: var(--space-2xl);
+        }
+        
+        /* ===== MOBILE RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: white;
+                z-index: 1000;
+                display: none;
+                padding: var(--space-2xl) var(--space-md);
+                overflow-y: auto;
+            }
+            
+            .main-nav.active {
+                display: block;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+            
+            .inductee-card.list-view {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .inductee-card.list-view .inductee-image {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .featured-details {
+                padding: var(--space-xl);
+            }
+            
+            .featured-details h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* High contrast mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --primary: #006400;
+                --accent: #228B22;
+            }
+            
+            .inductee-card {
+                border: 2px solid var(--dark);
+            }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --light: #1A1A1A;
+                --white: #2D2D2D;
+                --dark: #FFFFFF;
+                --gray-dark: #CCCCCC;
+                --gray: #999999;
+            }
+            
+            body {
+                background: #121212;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .header, .controls-section, .featured-inductee, 
+            .nomination-section, .footer, .view-details,
+            .modal-overlay {
+                display: none !important;
+            }
+            
+            .inductees-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: var(--space-md);
+            }
+            
+            .inductee-card {
+                break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+                color: black !important;
+                background: white !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header with Navigation -->
+    <header class="header" role="banner">
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <div class="school-logo">
+                    <img src="logo.png" alt="St Peters SSS Nsambya School Logo">
+                </div>
+                <div class="logo-text">
+                    <h1>St Peters SSS Nsambya</h1>
+                    <p>Wall of Fame</p>
+                </div>
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main Navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="wall-of-fame.html" class="active">Wall of Fame</a></li>
+                    <li><a href="nominate.html">Nominate</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" role="region" aria-label="Wall of Fame Introduction">
+        <div class="hero-content">
+            <h1>Celebrating Excellence & Legacy</h1>
+            <p>The St Peters Wall of Fame honors outstanding alumni, faculty, and community members who have made significant contributions to our school and beyond.</p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">156</span>
+                    <span class="stat-label">Inductees</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">42</span>
+                    <span class="stat-label">Years of History</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Controls Section -->
+    <section class="controls-section" role="search" aria-label="Wall of Fame Controls">
+        <div class="controls-container">
+            <div class="search-filter">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="search" id="searchInput" placeholder="Search inductees by name, year, or achievement..." aria-label="Search Wall of Fame">
+                </div>
+                
+                <div class="filter-tabs" role="tablist" aria-label="Filter by category">
+                    <button class="filter-btn active" data-category="all" role="tab" aria-selected="true">All Categories</button>
+                    <button class="filter-btn" data-category="academic" role="tab">Academic Excellence</button>
+                    <button class="filter-btn" data-category="athletics" role="tab">Athletics</button>
+                    <button class="filter-btn" data-category="arts" role="tab">Arts & Culture</button>
+                    <button class="filter-btn" data-category="community" role="tab">Community Service</button>
+                    <button class="filter-btn" data-category="leadership" role="tab">Leadership</button>
+                </div>
+            </div>
+            
+            <div class="sort-controls">
+                <div class="sort-by">
+                    <label for="sortSelect" class="sr-only">Sort by</label>
+                    <select id="sortSelect" aria-label="Sort inductees">
+                        <option value="year-desc">Most Recent First</option>
+                        <option value="year-asc">Oldest First</option>
+                        <option value="name-asc">Name A-Z</option>
+                        <option value="name-desc">Name Z-A</option>
+                    </select>
+                </div>
+                
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid" aria-label="Grid view">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list" aria-label="List view">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Featured Inductee -->
+        <section class="wall-container" aria-label="Featured Inductee">
+            <div class="featured-inductee">
+                <div class="featured-content">
+                    <div class="featured-image">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Sarah Mbeki receiving award">
+                    </div>
+                    <div class="featured-details">
+                        <span class="featured-badge">Inductee of the Year 2023</span>
+                        <h2>Dr. Sarah Mbeki</h2>
+                        <p class="featured-subtitle">Class of 1998 • Nobel Laureate in Medicine</p>
+                        <p class="featured-story">Dr. Mbeki's groundbreaking research in tropical disease treatment has saved millions of lives across Africa. Her journey began in our school's science lab, where she developed her passion for medical research.</p>
+                        
+                        <div class="featured-achievements">
+                            <div class="achievement-item">
+                                <i class="fas fa-award"></i>
+                                <span>Nobel Prize in Medicine 2022</span>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>PhD, University of Cambridge</span>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <span>Founded 3 medical clinics</span>
+                            </div>
+                        </div>
+                        
+                        <button class="view-details" data-inductee="sarah-mbeki">View Full Story</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Inductees Grid -->
+        <section class="wall-container" aria-label="Wall of Fame Inductees">
+            <h2 class="sr-only">All Inductees</h2>
+            <div class="inductees-grid" id="inducteesGrid">
+                <!-- Inductee 1 -->
+                <article class="inductee-card" data-category="academic" data-year="2020">
+                    <div class="inductee-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Professor James Kariuki">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-category category-academic">Academic</span>
+                            <span class="inductee-year">Class of 1985</span>
+                        </div>
+                        <h3 class="inductee-name">Professor James Kariuki</h3>
+                        <p class="inductee-achievement">NASA Space Scientist</p>
+                        <blockquote class="inductee-quote">"My teachers here taught me that the sky is not the limit, but just the beginning."</blockquote>
+                        <p class="inductee-bio">Led the Mars Rover mission team and contributed to 3 major space exploration projects. Author of 12 scientific papers on astrophysics.</p>
+                        <div class="inductee-footer">
+                            <div class="inductee-legacy">
+                                <i class="fas fa-star"></i>
+                                <span>Hall of Fame since 2020</span>
+                            </div>
+                            <button class="view-details" data-inductee="james-kariuki">View Details</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Inductee 2 -->
+                <article class="inductee-card" data-category="athletics" data-year="2019">
+                    <div class="inductee-image">
+                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="David Omondi running">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-category category-athletics">Athletics</span>
+                            <span class="inductee-year">Class of 2010</span>
+                        </div>
+                        <h3 class="inductee-name">David Omondi</h3>
+                        <p class="inductee-achievement">Olympic Gold Medalist</p>
+                        <blockquote class="inductee-quote">"The track taught me discipline; my teachers taught me perseverance."</blockquote>
+                        <p class="inductee-bio">Won gold in 400m at Tokyo 2020 Olympics. Holds 3 African records and represented Uganda in 15 international competitions.</p>
+                        <div class="inductee-footer">
+                            <div class="inductee-legacy">
+                                <i class="fas fa-star"></i>
+                                <span>Hall of Fame since 2019</span>
+                            </div>
+                            <button class="view-details" data-inductee="david-omondi">View Details</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Inductee 3 -->
+                <article class="inductee-card" data-category="arts" data-year="2021">
+                    <div class="inductee-image">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Grace Wangari painting">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-category category-arts">Arts</span>
+                            <span class="inductee-year">Class of 2005</span>
+                        </div>
+                        <h3 class="inductee-name">Grace Wangari</h3>
+                        <p class="inductee-achievement">Renowned Visual Artist</p>
+                        <blockquote class="inductee-quote">"Art allows us to see the world through different lenses."</blockquote>
+                        <p class="inductee-bio">Exhibited in 12 countries, with works displayed in the National Gallery. Founded the "Art for Education" initiative supporting young artists.</p>
+                        <div class="inductee-footer">
+                            <div class="inductee-legacy">
+                                <i class="fas fa-star"></i>
+                                <span>Hall of Fame since 2021</span>
+                            </div>
+                            <button class="view-details" data-inductee="grace-wangari">View Details</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Inductee 4 -->
+                <article class="inductee-card" data-category="community" data-year="2018">
+                    <div class="inductee-image">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Michael Okoth">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-category category-community">Community</span>
+                            <span class="inductee-year">Class of 1978</span>
+                        </div>
+                        <h3 class="inductee-name">Dr. Michael Okoth</h3>
+                        <p class="inductee-achievement">Public Health Pioneer</p>
+                        <blockquote class="inductee-quote">"Service to others is the rent we pay for our room on earth."</blockquote>
+                        <p class="inductee-bio">Established 5 rural health clinics serving over 50,000 people. Led vaccination campaigns reducing disease rates by 60% in northern Uganda.</p>
+                        <div class="inductee-footer">
+                            <div class="inductee-legacy">
+                                <i class="fas fa-star"></i>
+                                <span>Hall of Fame since 2018</span>
+                            </div>
+                            <button class="view-details" data-inductee="michael-okoth">View Details</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Inductee 5 -->
+                <article class="inductee-card" data-category="leadership" data-year="2022">
+                    <div class="inductee-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Rebecca Atim">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-category category-leadership">Leadership</span>
+                            <span class="inductee-year">Class of 1995</span>
+                        </div>
+                        <h3 class="inductee-name">Rebecca Atim</h3>
+                        <p class="inductee-achievement">Supreme Court Justice</p>
+                        <blockquote class="inductee-quote">"True leadership is about making justice accessible to all."</blockquote>
+                        <p class="inductee-bio">First female Supreme Court Justice in Uganda's history. Authored landmark rulings on gender equality and children's rights.</p>
+                        <div class="inductee-footer">
+                            <div class="inductee-legacy">
+                                <i class="fas fa-star"></i>
+                                <span>Hall of Fame since 2022</span>
+                            </div>
+                            <button class="view-details" data-inductee="rebecca-atim">View Details</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Inductee 6 -->
+                <article class="inductee-card" data-category="academic" data-year="2017">
+                    <div class="inductee-image">
+                        <img src="https://images.unsplash.com/photo-1551836026-d5c2e0c49b61?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Professor John Mwangi">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-category category-academic">Academic</span>
+                            <span class="inductee-year">Class of 1980</span>
+                        </div>
+                        <h3 class="inductee-name">Professor John Mwangi</h3>
+                        <p class="inductee-achievement">Renowned Economist</p>
+                        <blockquote class="inductee-quote">"Education is the most powerful investment a society can make."</blockquote>
+                        <p class="inductee-bio">Former World Bank Chief Economist for Africa. Developed economic policies that lifted 2 million people out of poverty.</p>
+                        <div class="inductee-footer">
+                            <div class="inductee-legacy">
+                                <i class="fas fa-star"></i>
+                                <span>Hall of Fame since 2017</span>
+                            </div>
+                            <button class="view-details" data-inductee="john-mwangi">View Details</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <!-- Nomination Section -->
+        <section class="nomination-section" aria-label="Nomination Process">
+            <div class="nomination-container">
+                <h2>Nominate a Worthy Candidate</h2>
+                <p>Help us recognize excellence by nominating outstanding alumni, faculty, or community members for the Wall of Fame.</p>
+                
+                <div class="nomination-process">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Submit Nomination</h3>
+                        <p>Complete the online nomination form with candidate details</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Committee Review</h3>
+                        <p>Selection committee reviews all nominations quarterly</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Induction Ceremony</h3>
+                        <p>Selected inductees honored at annual ceremony</p>
+                    </div>
+                </div>
+                
+                <button class="nominate-btn" id="nominateBtn">
+                    <i class="fas fa-edit"></i>
+                    Submit a Nomination
+                </button>
+            </div>
+        </section>
+        
+        <!-- Timeline Section -->
+        <section class="timeline-section" aria-label="Wall of Fame Timeline">
+            <div class="timeline-container">
+                <h2>Our Legacy Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1981</div>
+                            <h3>Wall of Fame Established</h3>
+                            <p>First 5 inductees honored in inaugural ceremony</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1995</div>
+                            <h3>First Female Inductee</h3>
+                            <p>Dr. Mary Nalwanga becomes first woman in Wall of Fame</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2008</div>
+                            <h3>Digital Archive Launched</h3>
+                            <p>All inductee records digitized for online access</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2020</div>
+                            <h3>Interactive Display</h3>
+                            <p>New touch-screen kiosk installed in school lobby</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Wall of Fame</h3>
+                <p>Celebrating excellence since 1981. The St Peters SSS Nsambya Wall of Fame honors those who have made significant contributions to our school and community.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Follow on Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Follow on Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Follow on Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Subscribe on YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="wall-of-fame.html">Browse Inductees</a></li>
+                    <li><a href="criteria.html">Selection Criteria</a></li>
+                    <li><a href="committee.html">Selection Committee</a></li>
+                    <li><a href="ceremony.html">Annual Ceremony</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:walloffame@stpetersnsambya.ac.ug">walloffame@stpetersnsambya.ac.ug</a></li>
+                    <li><a href="tel:+256414123456">+256 414 123 456</a></li>
+                    <li><a href="visit.html">Visit Physical Display</a></li>
+                    <li><a href="donate.html">Support the Wall of Fame</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Physical Location</h3>
+                <p>The Wall of Fame is prominently displayed in the school's main lobby, accessible during school hours. An interactive digital kiosk is available for detailed exploration.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 St Peters SSS Nsambya Wall of Fame. All rights reserved.</p>
+            <p>Maintained by the Alumni Relations Office • Updated November 2023</p>
+        </div>
+    </footer>
+    
+    <!-- Modal for Detailed View -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content" id="modalContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile Navigation
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+                mobileToggle.setAttribute('aria-expanded', !isExpanded);
+                mainNav.classList.toggle('active');
+            });
+        }
+        
+        // Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const inducteeCards = document.querySelectorAll('.inductee-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const category = button.getAttribute('data-category');
+                
+                // Filter cards
+                inducteeCards.forEach(card => {
+                    if (category === 'all') {
+                        card.style.display = 'flex';
+                    } else {
+                        const cardCategory = card.getAttribute('data-category');
+                        if (cardCategory === category) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+        
+        // View Toggle
+        const viewButtons = document.querySelectorAll('.view-btn');
+        const inducteesGrid = document.getElementById('inducteesGrid');
+        
+        viewButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all view buttons
+                viewButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const view = button.getAttribute('data-view');
+                
+                // Toggle view class
+                if (view === 'list') {
+                    inducteesGrid.classList.add('list-view');
+                    // Add list view class to each card
+                    inducteeCards.forEach(card => {
+                        card.classList.add('list-view');
+                    });
+                } else {
+                    inducteesGrid.classList.remove('list-view');
+                    // Remove list view class from each card
+                    inducteeCards.forEach(card => {
+                        card.classList.remove('list-view');
+                    });
+                }
+            });
+        });
+        
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                inducteeCards.forEach(card => {
+                    const name = card.querySelector('.inductee-name').textContent.toLowerCase();
+                    const year = card.querySelector('.inductee-year').textContent.toLowerCase();
+                    const achievement = card.querySelector('.inductee-achievement').textContent.toLowerCase();
+                    const bio = card.querySelector('.inductee-bio').textContent.toLowerCase();
+                    
+                    if (name.includes(searchTerm) || year.includes(searchTerm) || 
+                        achievement.includes(searchTerm) || bio.includes(searchTerm)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+        
+        // Sort Functionality
+        const sortSelect = document.getElementById('sortSelect');
+        
+        if (sortSelect) {
+            sortSelect.addEventListener('change', () => {
+                const sortValue = sortSelect.value;
+                
+                // Convert NodeList to Array for sorting
+                const cardsArray = Array.from(inducteeCards);
+                
+                cardsArray.sort((a, b) => {
+                    if (sortValue === 'year-desc') {
+                        return parseInt(b.getAttribute('data-year')) - parseInt(a.getAttribute('data-year'));
+                    } else if (sortValue === 'year-asc') {
+                        return parseInt(a.getAttribute('data-year')) - parseInt(b.getAttribute('data-year'));
+                    } else if (sortValue === 'name-asc') {
+                        const nameA = a.querySelector('.inductee-name').textContent;
+                        const nameB = b.querySelector('.inductee-name').textContent;
+                        return nameA.localeCompare(nameB);
+                    } else if (sortValue === 'name-desc') {
+                        const nameA = a.querySelector('.inductee-name').textContent;
+                        const nameB = b.querySelector('.inductee-name').textContent;
+                        return nameB.localeCompare(nameA);
+                    }
+                    return 0;
+                });
+                
+                // Reorder cards in the grid
+                const grid = document.getElementById('inducteesGrid');
+                cardsArray.forEach(card => {
+                    grid.appendChild(card);
+                });
+            });
+        }
+        
+        // Modal Functionality
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.getElementById('modalClose');
+        const modalContent = document.getElementById('modalContent');
+        
+        // Sample detailed content for inductees
+        const inducteeDetails = {
+            'sarah-mbeki': {
+                name: 'Dr. Sarah Mbeki',
+                category: 'Academic & Medicine',
+                year: 'Class of 1998',
+                image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                achievements: [
+                    'Nobel Prize in Medicine 2022',
+                    'PhD in Tropical Medicine, University of Cambridge',
+                    'Founded 3 rural medical clinics in Uganda',
+                    'Published 45 peer-reviewed research papers',
+                    'UN Health Ambassador for Africa'
+                ],
+                story: 'Dr. Sarah Mbeki\'s journey began in our school\'s modest science laboratory, where her chemistry teacher noticed her exceptional curiosity and attention to detail. After graduating top of her class, she earned a full scholarship to study medicine at Makerere University, where she graduated with honors. Her groundbreaking research on malaria treatment protocols has been adopted by the World Health Organization and is estimated to have saved over 2 million lives across Sub-Saharan Africa. Dr. Mbeki returns to St Peters annually to mentor young female scientists and has established a scholarship fund for girls pursuing STEM careers.',
+                impact: 'Her work has transformed malaria treatment protocols worldwide and inspired a generation of African scientists.',
+                quote: '"My teachers at St Peters taught me that no problem is too big to solve if you approach it with curiosity and determination."'
+            },
+            'james-kariuki': {
+                name: 'Professor James Kariuki',
+                category: 'Academic & Space Science',
+                year: 'Class of 1985',
+                image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                achievements: [
+                    'NASA Senior Space Scientist',
+                    'Led Mars Rover 2020 Mission Team',
+                    'Published 68 scientific papers',
+                    'MIT Visiting Professor',
+                    'African Space Agency Advisor'
+                ],
+                story: 'From watching the stars through the school telescope to leading missions to Mars, Professor Kariuki\'s journey exemplifies the power of curiosity and education. His innovative approach to space robotics has revolutionized how we explore other planets.',
+                impact: 'His work has advanced space exploration and inspired thousands of African students to pursue careers in astrophysics.',
+                quote: '"The universe is our classroom, and St Peters gave me my first textbook."'
+            }
+            // Additional inductee details can be added here
+        };
+        
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const inducteeId = button.getAttribute('data-inductee');
+                const details = inducteeDetails[inducteeId] || inducteeDetails['sarah-mbeki'];
+                
+                // Populate modal with inductee details
+                modalContent.innerHTML = `
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: start;">
+                            <div>
+                                <img src="${details.image}" alt="${details.name}" style="width: 100%; border-radius: 12px;">
+                                <div style="margin-top: 1rem; text-align: center;">
+                                    <span style="background: #2E7D32; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">${details.category}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h2 style="font-size: 2.5rem; color: #2E7D32; margin-bottom: 0.5rem;">${details.name}</h2>
+                                <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">${details.year}</p>
+                                
+                                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Notable Achievements</h3>
+                                <ul style="margin-bottom: 2rem;">
+                                    ${details.achievements.map(achievement => `<li style="margin-bottom: 0.5rem;">${achievement}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">The Journey</h3>
+                            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">${details.story}</p>
+                            
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Impact & Legacy</h3>
+                            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">${details.impact}</p>
+                            
+                            <blockquote style="border-left: 4px solid #8BC34A; padding-left: 1.5rem; font-style: italic; font-size: 1.2rem; color: #555; margin: 2rem 0;">
+                                ${details.quote}
+                            </blockquote>
+                        </div>
+                    </div>
+                `;
+                
+                // Show modal
+                modalOverlay.classList.add('active');
+                modalOverlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+            modalOverlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+                modalOverlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                modalOverlay.classList.remove('active');
+                modalOverlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Nomination button
+        const nominateBtn = document.getElementById('nominateBtn');
+        if (nominateBtn) {
+            nominateBtn.addEventListener('click', () => {
+                window.location.href = 'nominate.html';
+            });
+        }
+        
+        // Accessibility: Focus trap in modal
+        const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+        const modal = document.querySelector('.modal');
+        
+        function trapFocus(e) {
+            if (!modalOverlay.classList.contains('active')) return;
+            
+            const focusableContent = modal.querySelectorAll(focusableElements);
+            const firstFocusableElement = focusableContent[0];
+            const lastFocusableElement = focusableContent[focusableContent.length - 1];
+            
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusableElement) {
+                        lastFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusableElement) {
+                        firstFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        }
+        
+        document.addEventListener('keydown', trapFocus);
+        
+        // Initialize with current year filter
+        const currentYear = new Date().getFullYear();
+        const currentYearFilter = document.querySelector(`.filter-btn[data-year="${currentYear}"]`);
+        if (currentYearFilter) {
+            currentYearFilter.click();
+        }
+        
+        // Print functionality
+        const printBtn = document.createElement('button');
+        printBtn.innerHTML = '<i class="fas fa-print"></i> Print This Page';
+        printBtn.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #2E7D32; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; z-index: 100;';
+        printBtn.addEventListener('click', () => window.print());
+        document.body.appendChild(printBtn);
+        
+        console.log('Wall of Fame page loaded successfully');
+    </script>
+</body>
+</html>

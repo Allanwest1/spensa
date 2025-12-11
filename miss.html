@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>St Peters SSS Nsambya - Student Competitions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== MOBILE-FIRST CSS ===== */
+        :root {
+            /* Competition Colors */
+            --primary: #2E7D32;
+            --primary-dark: #1B5E20;
+            --primary-light: #4CAF50;
+            --accent: #8BC34A;
+            --mr-color: #2196F3;
+            --miss-color: #E91E63;
+            --position-color: #FF9800;
+            --past-color: #9C27B0;
+            
+            /* UI Colors */
+            --bg: #F8F9FA;
+            --surface: #FFFFFF;
+            --surface-1: rgba(255, 255, 255, 0.8);
+            --surface-2: #F5F5F5;
+            --text-primary: #212121;
+            --text-secondary: #666666;
+            --text-tertiary: #888888;
+            --border: rgba(0, 0, 0, 0.1);
+            --border-light: rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 0.75rem;
+            --space-lg: 1rem;
+            --space-xl: 1.25rem;
+            --space-2xl: 1.5rem;
+            --space-3xl: 2rem;
+            --space-4xl: 2.5rem;
+            --space-5xl: 3rem;
+            
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Responsive */
+            --mobile: 480px;
+            --tablet: 768px;
+            --desktop: 1024px;
+            --wide: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg);
+            overflow-x: hidden;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* ===== LAYOUT COMPONENTS ===== */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        .section {
+            padding: var(--space-3xl) 0;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: var(--space-3xl);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        .main-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: var(--space-md) 0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-text p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Navigation */
+        .main-nav {
+            display: flex;
+            gap: var(--space-xl);
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--space-md);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+            background: rgba(46, 125, 50, 0.1);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: var(--space-5xl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--space-xl);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: var(--space-3xl);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: var(--space-lg) var(--space-2xl);
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-md);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: white;
+        }
+
+        /* ===== COMPETITION FILTERS ===== */
+        .competition-filters {
+            background: var(--surface);
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 80px;
+            z-index: 900;
+        }
+
+        .filters-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: var(--space-md);
+            overflow-x: auto;
+            padding-bottom: var(--space-sm);
+            scrollbar-width: none;
+        }
+
+        .filter-group::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+            padding: var(--space-md) var(--space-xl);
+            background: var(--surface-2);
+            border: 2px solid transparent;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .filter-btn[data-type="mr"]:hover,
+        .filter-btn[data-type="mr"].active {
+            background: var(--mr-color);
+        }
+
+        .filter-btn[data-type="miss"]:hover,
+        .filter-btn[data-type="miss"].active {
+            background: var(--miss-color);
+        }
+
+        .filter-btn[data-type="position"]:hover,
+        .filter-btn[data-type="position"].active {
+            background: var(--position-color);
+        }
+
+        .filter-btn[data-type="past"]:hover,
+        .filter-btn[data-type="past"].active {
+            background: var(--past-color);
+        }
+
+        /* ===== COMPETITIONS GRID ===== */
+        .competitions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-4xl);
+        }
+
+        @media (max-width: 768px) {
+            .competitions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Competition Card */
+        .competition-card {
+            background: var(--surface);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .competition-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .competition-badge {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: white;
+            z-index: 2;
+        }
+
+        .badge-mr { background: var(--mr-color); }
+        .badge-miss { background: var(--miss-color); }
+        .badge-position { background: var(--position-color); }
+        .badge-past { background: var(--past-color); }
+
+        .competition-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .competition-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .competition-card:hover .competition-image img {
+            transform: scale(1.05);
+        }
+
+        .competition-content {
+            padding: var(--space-xl);
+        }
+
+        .competition-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            color: var(--text-primary);
+        }
+
+        .competition-meta {
+            display: flex;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .competition-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            line-height: 1.6;
+        }
+
+        .competition-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        /* ===== CONTESTANTS SECTION ===== */
+        .contestants-section {
+            background: var(--surface-2);
+        }
+
+        .contestants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        /* Contestant Card */
+        .contestant-card {
+            background: var(--surface);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+
+        .contestant-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contestant-rank {
+            position: absolute;
+            top: var(--space-lg);
+            left: var(--space-lg);
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            z-index: 2;
+        }
+
+        .contestant-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .contestant-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .contestant-card:hover .contestant-image img {
+            transform: scale(1.05);
+        }
+
+        .contestant-content {
+            padding: var(--space-xl);
+        }
+
+        .contestant-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+        }
+
+        .contestant-position {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+        }
+
+        .contestant-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            line-height: 1.6;
+        }
+
+        .contestant-votes {
+            background: var(--surface-2);
+            padding: var(--space-md);
+            border-radius: 8px;
+            margin-bottom: var(--space-lg);
+        }
+
+        .vote-count {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .vote-label {
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+        }
+
+        .vote-btn {
+            width: 100%;
+            padding: var(--space-lg);
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+        }
+
+        .vote-btn:hover:not(:disabled) {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .vote-btn:disabled {
+            background: var(--text-tertiary);
+            cursor: not-allowed;
+        }
+
+        /* ===== NOMINATION FORM ===== */
+        .nomination-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nomination-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.2;
+        }
+
+        .nomination-container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .nomination-form {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: var(--space-3xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-xl);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--space-lg);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--surface);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
+
+        /* ===== GUIDELINES & FAQ ===== */
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .guideline-card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .guideline-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-lg);
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .guideline-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            color: var(--text-primary);
+        }
+
+        .guideline-list {
+            list-style: none;
+        }
+
+        .guideline-list li {
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-xl);
+            position: relative;
+        }
+
+        .guideline-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border-radius: 12px;
+            margin-bottom: var(--space-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            padding: var(--space-xl);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-primary);
+        }
+
+        .faq-answer {
+            padding: 0 var(--space-xl);
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .faq-answer.active {
+            padding: var(--space-xl);
+            max-height: 500px;
+        }
+
+        /* ===== ARCHIVES SECTION ===== */
+        .archives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .archive-card {
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .archive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .archive-year {
+            background: var(--past-color);
+            color: white;
+            padding: var(--space-md);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .archive-content {
+            padding: var(--space-xl);
+            text-align: center;
+        }
+
+        .archive-winners {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin: var(--space-lg) 0;
+        }
+
+        .winner {
+            text-align: center;
+        }
+
+        .winner-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto var(--space-md);
+            border: 3px solid var(--primary);
+        }
+
+        .winner-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .winner-name {
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+
+        .winner-title {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== FOOTER ===== */
+        .main-footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: var(--space-4xl) 0 var(--space-3xl);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-3xl);
+            margin-bottom: var(--space-4xl);
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-xl);
+            color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-3xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.875rem;
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: var(--space-lg);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            background: var(--surface);
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: var(--space-2xl);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--surface-2);
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            padding: var(--space-2xl);
+        }
+
+        /* ===== MOBILE RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+            }
+            
+            .section {
+                padding: var(--space-2xl) 0;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .nomination-form {
+                padding: var(--space-xl);
+            }
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .text-center { text-align: center; }
+        .mb-1 { margin-bottom: var(--space-sm); }
+        .mb-2 { margin-bottom: var(--space-md); }
+        .mb-3 { margin-bottom: var(--space-lg); }
+        .mb-4 { margin-bottom: var(--space-xl); }
+        .mb-5 { margin-bottom: var(--space-2xl); }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <div class="logo-img">
+                        <img src="logo.png" alt="School Logo">
+                    </div>
+                    <div class="logo-text">
+                        <h1>St Peters SSS Nsambya</h1>
+                        <p>Student Competitions</p>
+                    </div>
+                </a>
+                
+                <nav class="main-nav">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#competitions" class="nav-link">Competitions</a>
+                    <a href="#contestants" class="nav-link">Contestants</a>
+                    <a href="#nominate" class="nav-link">Nominate</a>
+                    <a href="#guidelines" class="nav-link">Guidelines</a>
+                    <a href="#archives" class="nav-link">Archives</a>
+                </nav>
+                
+                <button class="mobile-nav-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Celebrating Student Excellence</h1>
+                <p>From Mr. & Miss School to Student Leadership Positions - Recognizing the best of St Peters SSS Nsambya</p>
+                <div class="hero-actions">
+                    <a href="#contestants" class="btn btn-primary">
+                        <i class="fas fa-vote-yea"></i> Vote Now
+                    </a>
+                    <a href="#nominate" class="btn btn-secondary">
+                        <i class="fas fa-user-plus"></i> Nominate a Student
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competition Filters -->
+    <section class="competition-filters">
+        <div class="container">
+            <div class="filters-container">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-type="all">All Competitions</button>
+                    <button class="filter-btn" data-type="mr">Mr. School</button>
+                    <button class="filter-btn" data-type="miss">Miss School</button>
+                    <button class="filter-btn" data-type="position">Leadership Positions</button>
+                    <button class="filter-btn" data-type="past">Past Winners</button>
+                </div>
+                
+                <div class="filter-group">
+                    <button class="filter-btn" data-year="2023">2023-2024</button>
+                    <button class="filter-btn" data-year="2022">2022-2023</button>
+                    <button class="filter-btn" data-year="2021">2021-2022</button>
+                    <button class="filter-btn" data-year="2020">2020-2021</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitions Grid -->
+    <section class="section" id="competitions">
+        <div class="container">
+            <h2 class="section-title">Current Competitions</h2>
+            <div class="competitions-grid" id="competitionsGrid">
+                <!-- Competition cards will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contestants Section -->
+    <section class="section contestants-section" id="contestants">
+        <div class="container">
+            <h2 class="section-title">Meet the Contestants</h2>
+            <div class="contestants-grid" id="contestantsGrid">
+                <!-- Contestant cards will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Nomination Section -->
+    <section class="section nomination-section" id="nominate">
+        <div class="container">
+            <div class="nomination-container">
+                <h2 class="section-title" style="color: white;">Nominate a Student</h2>
+                <form class="nomination-form" id="nominationForm">
+                    <div class="form-group">
+                        <label class="form-label">Nominee's Name</label>
+                        <input type="text" class="form-control" placeholder="Enter full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Nominee's Class</label>
+                        <input type="text" class="form-control" placeholder="e.g., S.5 Science" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Competition Category</label>
+                        <select class="form-control form-select" required>
+                            <option value="">Select category</option>
+                            <option value="mr">Mr. School</option>
+                            <option value="miss">Miss School</option>
+                            <option value="head-prefect">Head Prefect</option>
+                            <option value="deputy-head">Deputy Head Prefect</option>
+                            <option value="sports-captain">Sports Captain</option>
+                            <option value="academic">Academic Leader</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Why are you nominating this student?</label>
+                        <textarea class="form-control form-textarea" placeholder="Describe their achievements, leadership qualities, and why they deserve to win..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Your Name (Nominator)</label>
+                        <input type="text" class="form-control" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Your Email</label>
+                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Submit Nomination
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guidelines & FAQ -->
+    <section class="section" id="guidelines">
+        <div class="container">
+            <h2 class="section-title">Competition Guidelines</h2>
+            
+            <div class="guidelines-grid mb-5">
+                <div class="guideline-card">
+                    <div class="guideline-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="guideline-title">Eligibility Criteria</h3>
+                    <ul class="guideline-list">
+                        <li>Must be a current student of St Peters SSS Nsambya</li>
+                        <li>Minimum academic performance of 2.5 GPA</li>
+                        <li>Good disciplinary record</li>
+                        <li>Active participation in school activities</li>
+                        <li>Leadership qualities demonstrated</li>
+                    </ul>
+                </div>
+                
+                <div class="guideline-card">
+                    <div class="guideline-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="guideline-title">Competition Timeline</h3>
+                    <ul class="guideline-list">
+                        <li>Nomination Period: Sept 1 - Sept 30</li>
+                        <li>Screening & Interviews: Oct 1 - Oct 15</li>
+                        <li>Campaign Period: Oct 16 - Nov 15</li>
+                        <li>Voting Period: Nov 16 - Nov 30</li>
+                        <li>Results Announcement: Dec 10</li>
+                    </ul>
+                </div>
+                
+                <div class="guideline-card">
+                    <div class="guideline-icon">
+                        <i class="fas fa-vote-yea"></i>
+                    </div>
+                    <h3 class="guideline-title">Voting Rules</h3>
+                    <ul class="guideline-list">
+                        <li>One vote per student per category</li>
+                        <li>Voting requires student ID verification</li>
+                        <li>Voting closes at 11:59 PM on deadline</li>
+                        <li>Results are final and binding</li>
+                        <li>No vote buying or coercion allowed</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3 class="section-title">Frequently Asked Questions</h3>
+            <div class="faq-container">
+                <!-- FAQ items will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Archives Section -->
+    <section class="section" id="archives">
+        <div class="container">
+            <h2 class="section-title">Past Winners Archive</h2>
+            <div class="archives-grid" id="archivesGrid">
+                <!-- Archive cards will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Student Competitions</h3>
+                    <p>Recognizing and celebrating student excellence at St Peters SSS Nsambya since 1995.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#competitions"><i class="fas fa-trophy"></i> Competitions</a></li>
+                        <li><a href="#contestants"><i class="fas fa-users"></i> Contestants</a></li>
+                        <li><a href="#nominate"><i class="fas fa-edit"></i> Nominate</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#guidelines"><i class="fas fa-book"></i> Competition Guidelines</a></li>
+                        <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        <li><a href="#schedule"><i class="fas fa-calendar-alt"></i> Event Schedule</a></li>
+                        <li><a href="#contact"><i class="fas fa-phone"></i> Contact Committee</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:competitions@stpetersnsambya.ac.ug"><i class="fas fa-envelope"></i> competitions@stpetersnsambya.ac.ug</a></li>
+                        <li><a href="tel:+256414123456"><i class="fas fa-phone"></i> +256 414 123 456</a></li>
+                        <li><a href="#location"><i class="fas fa-map-marker-alt"></i> Student Affairs Office</a></li>
+                        <li><a href="#hours"><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 St Peters SSS Nsambya Student Competitions. All rights reserved.</p>
+                <p>Managed by the Student Affairs Department • Data Protection Compliant</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Contestant Details -->
+    <div class="modal-overlay" id="contestantModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Contestant Details</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Voting Success Modal -->
+    <div class="modal-overlay" id="voteModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Vote Submitted!</h3>
+                <button class="modal-close" id="voteModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; padding: var(--space-2xl) 0;">
+                    <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--primary); margin-bottom: var(--space-xl);"></i>
+                    <h3 style="margin-bottom: var(--space-md);">Thank you for voting!</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: var(--space-xl);">
+                        Your vote has been recorded successfully. Results will be announced on December 10, 2023.
+                    </p>
+                    <button class="btn btn-primary" id="closeVoteModal" style="width: 100%;">
+                        Continue Browsing
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // ===== DATABASE SIMULATION =====
+        // In a real application, this would come from a backend API
+        const competitionsDB = [
+            {
+                id: 1,
+                title: "Mr. School 2023-2024",
+                type: "mr",
+                year: "2023",
+                description: "Annual competition to crown the male student who best represents school values, leadership, and academic excellence.",
+                image: "unknown.jpeg",
+                startDate: "2023-09-01",
+                endDate: "2023-11-30",
+                status: "active",
+                contestants: 12,
+                votes: 2456
+            },
+            {
+                id: 2,
+                title: "Miss School 2023-2024",
+                type: "miss",
+                year: "2023",
+                description: "Celebrating female students who exemplify intelligence, confidence, and positive contribution to school community.",
+                image: "unknowm.jpeg",
+                startDate: "2023-09-01",
+                endDate: "2023-11-30",
+                status: "active",
+                contestants: 15,
+                votes: 3124
+            },
+            {
+                id: 3,
+                title: "Head Prefect Elections",
+                type: "position",
+                year: "2023",
+                description: "Selecting the student leader who will represent all students and coordinate with school administration.",
+                image: "unknown.jpeg",
+                startDate: "2023-10-01",
+                endDate: "2023-10-31",
+                status: "active",
+                contestants: 8,
+                votes: 1895
+            },
+            {
+                id: 4,
+                title: "Mr. School 2022-2023",
+                type: "past",
+                year: "2022",
+                description: "Previous year's competition winner: John Mwangi from S.6 Science",
+                image: "unknown.jpeg",
+                startDate: "2022-09-01",
+                endDate: "2022-11-30",
+                status: "completed",
+                contestants: 10,
+                votes: 1987
+            }
+        ];
+
+        const contestantsDB = [
+            {
+                id: 1,
+                name: "David Omondi",
+                class: "S.6 Science",
+                competition: "Mr. School",
+                type: "mr",
+                image: "unknown.jpeg",
+                quote: "Leadership is not about being in charge, it's about taking care of those in your charge.",
+                bio: "Head of Science Club, Debate Team Captain, and volunteer at local community center.",
+                votes: 456,
+                rank: 1
+            },
+            {
+                id: 2,
+                name: "Sarah Mbeki",
+                class: "S.5 Arts",
+                competition: "Miss School",
+                type: "miss",
+                image: "unknown.jpeg",
+                quote: "Empowerment comes from within, but it's nurtured by community.",
+                bio: "President of Art Society, lead organizer of Charity Week, and school choir member.",
+                votes: 512,
+                rank: 1
+            },
+            {
+                id: 3,
+                name: "James Kariuki",
+                class: "S.6 Science",
+                competition: "Head Prefect",
+                type: "position",
+                image: "unknown.jpeg",
+                quote: "Service above self is the true measure of leadership.",
+                bio: "Current Deputy Head Prefect, Math Olympiad winner, and peer counseling coordinator.",
+                votes: 289,
+                rank: 1
+            },
+            {
+                id: 4,
+                name: "Grace Wangari",
+                class: "S.5 Arts",
+                competition: "Miss School",
+                type: "miss",
+                image: "unknown.jpeg",
+                quote: "Beauty with purpose, intelligence with compassion.",
+                bio: "Drama Club President, environmental activist, and school newsletter editor.",
+                votes: 478,
+                rank: 2
+            }
+        ];
+
+        const archivesDB = [
+            {
+                year: "2022-2023",
+                mr: { name: "John Mwangi", class: "S.6 Science", image: "unknown.jpeg" },
+                miss: { name: "Mary Nalwanga", class: "S.6 Arts", image: "unknown.jpeg" },
+                headPrefect: { name: "Peter Okello", class: "S.6 Science", image: "unknown.jpeg" }
+            },
+            {
+                year: "2021-2022",
+                mr: { name: "Michael Okoth", class: "S.6 Science", image: "unknown.jpeg" },
+                miss: { name: "Rebecca Atim", class: "S.6 Arts", image: "unknown.jpeg" },
+                headPrefect: { name: "Alex Kamau", class: "S.6 Science", image: "unknown.jpeg" }
+            },
+            {
+                year: "2020-2021",
+                mr: { name: "Daniel Mutebi", class: "S.6 Science", image: "unknown.jpeg" },
+                miss: { name: "Susan Namutebi", class: "S.6 Arts", image: "unknown.jpeg" },
+                headPrefect: { name: "Brian Ssali", class: "S.6 Science", image: "unknown.jpeg" }
+            }
+        ];
+
+        const faqDB = [
+            {
+                question: "Who is eligible to participate in these competitions?",
+                answer: "Any current student of St Peters SSS Nsambya with a minimum GPA of 2.5, good disciplinary record, and active participation in school activities is eligible."
+            },
+            { 
+                question: "How does the voting process work?",
+                answer: "Each student can vote once per competition category using their student ID for verification. Voting is done through this platform during the designated voting period."
+            },
+            {
+                question: "Can I nominate myself for a competition?",
+                answer: "Yes, self-nominations are accepted. However, you must meet all eligibility criteria and provide the required information."
+            },
+            {
+                question: "When will the results be announced?",
+                answer: "Results are announced at the annual awards ceremony on December 10th. Winners will also be featured on the school website and notice boards."
+            },
+            {
+                question: "What are the criteria for judging?",
+                answer: "Judging is based on academic performance (30%), leadership qualities (30%), community involvement (20%), interview performance (10%), and student votes (10%)."
+            }
+        ];
+
+        // ===== STATE MANAGEMENT =====
+        let currentFilter = 'all';
+        let currentYear = '2023';
+        let votedContestants = JSON.parse(localStorage.getItem('votedContestants') || '[]');
+
+        // ===== DOM ELEMENTS =====
+        const competitionsGrid = document.getElementById('competitionsGrid');
+        const contestantsGrid = document.getElementById('contestantsGrid');
+        const archivesGrid = document.getElementById('archivesGrid');
+        const faqContainer = document.querySelector('.faq-container');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const yearButtons = document.querySelectorAll('[data-year]');
+        const nominationForm = document.getElementById('nominationForm');
+        const contestantModal = document.getElementById('contestantModal');
+        const voteModal = document.getElementById('voteModal');
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCompetitions();
+            renderContestants();
+            renderArchives();
+            renderFAQ();
+            setupEventListeners();
+            setupMobileNavigation();
+        });
+
+        // ===== RENDER FUNCTIONS =====
+        function renderCompetitions() {
+            competitionsGrid.innerHTML = '';
+            
+            const filteredCompetitions = competitionsDB.filter(comp => {
+                if (currentFilter !== 'all' && comp.type !== currentFilter) return false;
+                if (currentYear && comp.year !== currentYear) return false;
+                return true;
+            });
+            
+            filteredCompetitions.forEach(comp => {
+                const card = document.createElement('div');
+                card.className = 'competition-card';
+                card.innerHTML = `
+                    <span class="competition-badge badge-${comp.type}">
+                        ${comp.type === 'mr' ? 'Mr. School' : 
+                          comp.type === 'miss' ? 'Miss School' : 
+                          comp.type === 'position' ? 'Leadership' : 'Past Winner'}
+                    </span>
+                    <div class="competition-image">
+                        <img src="${comp.image}" alt="${comp.title}">
+                    </div>
+                    <div class="competition-content">
+                        <h3 class="competition-title">${comp.title}</h3>
+                        <div class="competition-meta">
+                            <div class="meta-item">
+                                <i class="far fa-calendar"></i>
+                                ${new Date(comp.startDate).toLocaleDateString()} - ${new Date(comp.endDate).toLocaleDateString()}
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-user-friends"></i>
+                                ${comp.contestants} Contestants
+                            </div>
+                        </div>
+                        <p class="competition-description">${comp.description}</p>
+                        <div class="competition-stats">
+                            <div class="stat">
+                                <span class="stat-value">${comp.votes.toLocaleString()}</span>
+                                <span class="stat-label">Total Votes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">${comp.status === 'active' ? 'Active' : 'Completed'}</span>
+                                <span class="stat-label">Status</span>
+                            </div>
+                            <button class="btn btn-primary" onclick="viewContestants('${comp.type}')">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </div>
+                `;
+                competitionsGrid.appendChild(card);
+            });
+        }
+
+        function renderContestants() {
+            contestantsGrid.innerHTML = '';
+            
+            const filteredContestants = contestantsDB.filter(contestant => {
+                if (currentFilter !== 'all' && contestant.type !== currentFilter) return false;
+                return true;
+            });
+            
+            filteredContestants.forEach(contestant => {
+                const hasVoted = votedContestants.includes(contestant.id);
+                const card = document.createElement('div');
+                card.className = 'contestant-card';
+                card.innerHTML = `
+                    ${contestant.rank <= 3 ? `<div class="contestant-rank">${contestant.rank}</div>` : ''}
+                    <div class="contestant-image">
+                        <img src="${contestant.image}" alt="${contestant.name}">
+                    </div>
+                    <div class="contestant-content">
+                        <h3 class="contestant-name">${contestant.name}</h3>
+                        <p class="contestant-position">${contestant.competition} • ${contestant.class}</p>
+                        <blockquote class="contestant-quote">"${contestant.quote}"</blockquote>
+                        <div class="contestant-votes">
+                            <div class="vote-count">${contestant.votes.toLocaleString()}</div>
+                            <div class="vote-label">Votes Received</div>
+                        </div>
+                        <button class="vote-btn" onclick="voteForContestant(${contestant.id})" ${hasVoted ? 'disabled' : ''}>
+                            <i class="fas fa-vote-yea"></i>
+                            ${hasVoted ? 'Already Voted' : 'Vote Now'}
+                        </button>
+                        <button class="btn btn-secondary" onclick="viewContestantDetails(${contestant.id})" style="width: 100%; margin-top: 1rem;">
+                            <i class="fas fa-info-circle"></i> View Profile
+                        </button>
+                    </div>
+                `;
+                contestantsGrid.appendChild(card);
+            });
+        }
+
+        function renderArchives() {
+            archivesGrid.innerHTML = '';
+            
+            archivesDB.forEach(archive => {
+                const card = document.createElement('div');
+                card.className = 'archive-card';
+                card.innerHTML = `
+                    <div class="archive-year">${archive.year}</div>
+                    <div class="archive-content">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">Winners</h3>
+                        <div class="archive-winners">
+                            <div class="winner">
+                                <div class="winner-image">
+                                    <img src="${archive.mr.image}" alt="${archive.mr.name}">
+                                </div>
+                                <div class="winner-name">${archive.mr.name}</div>
+                                <div class="winner-title">Mr. School</div>
+                            </div>
+                            <div class="winner">
+                                <div class="winner-image">
+                                    <img src="${archive.miss.image}" alt="${archive.miss.name}">
+                                </div>
+                                <div class="winner-name">${archive.miss.name}</div>
+                                <div class="winner-title">Miss School</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="viewArchiveDetails('${archive.year}')">
+                            <i class="fas fa-history"></i> View Full Results
+                        </button>
+                    </div>
+                `;
+                archivesGrid.appendChild(card);
+            });
+        }
+
+        function renderFAQ() {
+            faqContainer.innerHTML = '';
+            
+            faqDB.forEach((faq, index) => {
+                const item = document.createElement('div');
+                item.className = 'faq-item';
+                item.innerHTML = `
+                    <div class="faq-question" onclick="toggleFAQ(${index})">
+                        ${faq.question}
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        ${faq.answer}
+                    </div>
+                `;
+                faqContainer.appendChild(item);
+            });
+        }
+
+        // ===== EVENT HANDLERS =====
+        function setupEventListeners() {
+            // Filter buttons
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.type;
+                    renderCompetitions();
+                    renderContestants();
+                });
+            });
+
+            // Year buttons
+            yearButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    yearButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentYear = btn.dataset.year;
+                    renderCompetitions();
+                });
+            });
+
+            // Nomination form
+            if (nominationForm) {
+                nominationForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Nomination submitted successfully! The committee will review your nomination.');
+                    nominationForm.reset();
+                });
+            }
+
+            // Modal close buttons
+            document.getElementById('modalClose').addEventListener('click', () => {
+                contestantModal.classList.remove('active');
+            });
+
+            document.getElementById('voteModalClose').addEventListener('click', () => {
+                voteModal.classList.remove('active');
+            });
+
+            document.getElementById('closeVoteModal').addEventListener('click', () => {
+                voteModal.classList.remove('active');
+            });
+
+            // Close modals on overlay click
+            document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) {
+                        overlay.classList.remove('active');
+                    }
+                });
+            });
+        }
+
+        function setupMobileNavigation() {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            mobileToggle.addEventListener('click', () => {
+                const nav = document.querySelector('.main-nav');
+                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            // Close mobile nav when link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.main-nav').style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // ===== FEATURE FUNCTIONS =====
+        function voteForContestant(contestantId) {
+            // In a real app, this would be an API call
+            if (votedContestants.includes(contestantId)) {
+                alert('You have already voted for this contestant!');
+                return;
+            }
+            
+            // Simulate voting
+            votedContestants.push(contestantId);
+            localStorage.setItem('votedContestants', JSON.stringify(votedContestants));
+            
+            // Update contestant vote count
+            const contestant = contestantsDB.find(c => c.id === contestantId);
+            if (contestant) {
+                contestant.votes += 1;
+            }
+            
+            // Show success modal
+            voteModal.classList.add('active');
+            
+            // Update UI
+            setTimeout(() => {
+                renderContestants();
+            }, 500);
+        }
+
+        function viewContestantDetails(contestantId) {
+            const contestant = contestantsDB.find(c => c.id === contestantId);
+            if (!contestant) return;
+            
+            document.getElementById('modalTitle').textContent = contestant.name;
+            document.getElementById('modalBody').innerHTML = `
+                <div style="display: grid; gap: 2rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: start;">
+                        <div>
+                            <img src="${contestant.image}" alt="${contestant.name}" style="width: 100%; border-radius: 12px;">
+                            <div style="margin-top: 1rem; text-align: center;">
+                                <span style="background: var(--${contestant.type}-color); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600;">
+                                    ${contestant.competition}
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">${contestant.name}</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">${contestant.class}</p>
+                            
+                            <div style="background: var(--surface-2); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                                <h4 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">Achievements & Activities</h4>
+                                <p style="line-height: 1.6; color: var(--text-primary);">${contestant.bio}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; gap: 1.5rem;">
+                        <div>
+                            <h4 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Campaign Message</h4>
+                            <blockquote style="border-left: 4px solid var(--accent); padding-left: 1rem; font-style: italic; color: var(--text-secondary);">
+                                "${contestant.quote}"
+                            </blockquote>
+                        </div>
+                        
+                        <div style="background: var(--surface-2); padding: 1.5rem; border-radius: 12px;">
+                            <h4 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Voting Statistics</h4>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+                                <div>
+                                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">${contestant.votes.toLocaleString()}</div>
+                                    <div style="font-size: 0.875rem; color: var(--text-tertiary);">Total Votes</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">${contestant.rank}</div>
+                                    <div style="font-size: 0.875rem; color: var(--text-tertiary);">Current Rank</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">${contestant.type === 'mr' ? 'Mr.' : 'Miss'}</div>
+                                    <div style="font-size: 0.875rem; color: var(--text-tertiary);">Category</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            contestantModal.classList.add('active');
+        }
+
+        function viewContestants(competitionType) {
+            currentFilter = competitionType;
+            filterButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.type === competitionType);
+            });
+            
+            renderContestants();
+            
+            // Scroll to contestants section
+            document.getElementById('contestants').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function viewArchiveDetails(year) {
+            const archive = archivesDB.find(a => a.year === year);
+            if (!archive) return;
+            
+            document.getElementById('modalTitle').textContent = `${year} Winners`;
+            document.getElementById('modalBody').innerHTML = `
+                <div style="text-align: center;">
+                    <h3 style="margin-bottom: 2rem; color: var(--text-primary);">Complete Results</h3>
+                    
+                    <div style="display: grid; gap: 2rem;">
+                        <div style="background: var(--surface-2); padding: 1.5rem; border-radius: 12px;">
+                            <h4 style="margin-bottom: 1rem; color: var(--mr-color);">Mr. School Winner</h4>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <img src="${archive.mr.image}" alt="${archive.mr.name}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                                <div style="text-align: left;">
+                                    <div style="font-weight: 700; font-size: 1.25rem;">${archive.mr.name}</div>
+                                    <div style="color: var(--text-secondary);">${archive.mr.class}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: var(--surface-2); padding: 1.5rem; border-radius: 12px;">
+                            <h4 style="margin-bottom: 1rem; color: var(--miss-color);">Miss School Winner</h4>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <img src="${archive.miss.image}" alt="${archive.miss.name}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                                <div style="text-align: left;">
+                                    <div style="font-weight: 700; font-size: 1.25rem;">${archive.miss.name}</div>
+                                    <div style="color: var(--text-secondary);">${archive.miss.class}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: var(--surface-2); padding: 1.5rem; border-radius: 12px;">
+                            <h4 style="margin-bottom: 1rem; color: var(--position-color);">Head Prefect Winner</h4>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <img src="${archive.headPrefect.image}" alt="${archive.headPrefect.name}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                                <div style="text-align: left;">
+                                    <div style="font-weight: 700; font-size: 1.25rem;">${archive.headPrefect.name}</div>
+                                    <div style="color: var(--text-secondary);">${archive.headPrefect.class}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            contestantModal.classList.add('active');
+        }
+
+        function toggleFAQ(index) {
+            const answer = document.querySelectorAll('.faq-answer')[index];
+            const icon = document.querySelectorAll('.faq-question i')[index];
+            
+            answer.classList.toggle('active');
+            icon.style.transform = answer.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        // ===== REAL-TIME UPDATES SIMULATION =====
+        // Simulate live vote updates (in real app, would use WebSockets)
+        setInterval(() => {
+            if (Math.random() > 0.7) { // 30% chance to update votes
+                contestantsDB.forEach(contestant => {
+                    if (Math.random() > 0.5) { // Random vote increases
+                        contestant.votes += Math.floor(Math.random() * 5);
+                    }
+                });
+                renderContestants();
+            }
+        }, 10000); // Update every 10 seconds
+
+        // ===== SOCIAL SHARING =====
+        function shareContestant(contestantId) {
+            const contestant = contestantsDB.find(c => c.id === contestantId);
+            if (!contestant) return;
+            
+            const shareText = `Support ${contestant.name} for ${contestant.competition} at St Peters SSS Nsambya!`;
+            const shareUrl = window.location.href + `#contestant-${contestantId}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Vote for ' + contestant.name,
+                    text: shareText,
+                    url: shareUrl
+                });
+            } else {
+                // Fallback for desktop
+                navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+                alert('Link copied to clipboard!');
+            }
+        }
+
+        // ===== EXPORT FUNCTIONS FOR HTML ONCLICK =====
+        window.voteForContestant = voteForContestant;
+        window.viewContestantDetails = viewContestantDetails;
+        window.viewContestants = viewContestants;
+        window.viewArchiveDetails = viewArchiveDetails;
+        window.toggleFAQ = toggleFAQ;
+        window.shareContestant = shareContestant;
+
+        console.log('School Competition Platform loaded successfully!');
+    </script>
+</body>
+</html>      if (Math.random() > 0.5) { // Random vote increases
+                        contestant.votes += Math.floor(Math.random() * 5);
+                    }
+                });
+                renderContestants();
+            }
+        }, 10000); // Update every 10 seconds
+
+        // ===== SOCIAL SHARING =====
+        function shareContestant(contestantId) {
+            const contestant = contestantsDB.find(c => c.id === contestantId);
+            if (!contestant) return;
+            
+            const shareText = `Support ${contestant.name} for ${contestant.competition} at St Peters SSS Nsambya!`;
+            const shareUrl = window.location.href + `#contestant-${contestantId}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Vote for ' + contestant.name,
+                    text: shareText,
+                    url: shareUrl
+                });
+            } else {
+                // Fallback for desktop
+                navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+                alert('Link copied to clipboard!');
+            }
+        }
+
+        // ===== EXPORT FUNCTIONS FOR HTML ONCLICK =====
+        window.voteForContestant = voteForContestant;
+        window.viewContestantDetails = viewContestantDetails;
+        window.viewContestants = viewContestants;
+        window.viewArchiveDetails = viewArchiveDetails;
+        window.toggleFAQ = toggleFAQ;
+        window.shareContestant = shareContestant;
+
+        console.log('School Competition Platform loaded successfully!');
+    </script>
+</body>
+</html>

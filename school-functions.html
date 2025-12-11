@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>St Peters SSS Nsambya - Wall of Fame</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== MOBILE-FIRST CSS RESET ===== */
+        :root {
+            /* Color Palette - Optimized for mobile screens */
+            --primary: #2E7D32;
+            --primary-dark: #1B5E20;
+            --primary-light: #4CAF50;
+            --accent: #8BC34A;
+            
+            /* Mobile-optimized neutrals */
+            --bg: #F8F9FA;
+            --surface: #FFFFFF;
+            --surface-1: rgba(255, 255, 255, 0.8);
+            --surface-2: #F5F5F5;
+            --text-primary: #212121;
+            --text-secondary: #666666;
+            --text-tertiary: #888888;
+            --border: rgba(0, 0, 0, 0.1);
+            --border-light: rgba(0, 0, 0, 0.05);
+            
+            /* Touch-friendly sizes */
+            --touch-target: 44px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Mobile-optimized spacing */
+            --space-xs: 0.25rem;  /* 4px */
+            --space-sm: 0.5rem;   /* 8px */
+            --space-md: 0.75rem;  /* 12px */
+            --space-lg: 1rem;     /* 16px */
+            --space-xl: 1.25rem;  /* 20px */
+            --space-2xl: 1.5rem;  /* 24px */
+            --space-3xl: 2rem;    /* 32px */
+            --space-4xl: 2.5rem;  /* 40px */
+            --space-5xl: 3rem;    /* 48px */
+            
+            /* Mobile-optimized typography */
+            --font-size-xs: 0.75rem;   /* 12px */
+            --font-size-sm: 0.875rem;  /* 14px */
+            --font-size-base: 1rem;    /* 16px */
+            --font-size-lg: 1.125rem;  /* 18px */
+            --font-size-xl: 1.25rem;   /* 20px */
+            --font-size-2xl: 1.5rem;   /* 24px */
+            --font-size-3xl: 1.75rem;  /* 28px */
+            --font-size-4xl: 2rem;     /* 32px */
+            
+            /* Mobile-optimized shadows */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            
+            /* Smooth transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Safe area insets for modern phones */
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --safe-left: env(safe-area-inset-left, 0px);
+            --safe-right: env(safe-area-inset-right, 0px);
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: var(--font-size-base);
+            line-height: 1.5;
+            color: var(--text-primary);
+            background: var(--bg);
+            overflow-x: hidden;
+            padding-top: var(--safe-top);
+            padding-bottom: var(--safe-bottom);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== TOUCH-FRIENDLY ELEMENTS ===== */
+        button,
+        a,
+        input,
+        select {
+            font-size: inherit;
+            font-family: inherit;
+        }
+
+        button,
+        .btn {
+            min-height: var(--touch-target);
+            min-width: var(--touch-target);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-lg);
+        }
+
+        /* ===== SKIP LINK ===== */
+        .skip-link {
+            position: fixed;
+            top: calc(var(--safe-top) + var(--space-sm));
+            left: var(--space-lg);
+            background: var(--primary);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 9999;
+            transform: translateY(-100%);
+            transition: transform var(--transition-base);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        /* ===== MOBILE HEADER ===== */
+        .mobile-header {
+            position: fixed;
+            top: var(--safe-top);
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: var(--space-sm) var(--space-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            flex: 1;
+        }
+
+        .logo-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+            flex-shrink: 0;
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-text h1 {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .header-text p {
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+        }
+
+        /* ===== MOBILE NAVIGATION ===== */
+        .mobile-nav-toggle {
+            width: var(--touch-target);
+            height: var(--touch-target);
+            border-radius: var(--radius-md);
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .mobile-nav-toggle i {
+            font-size: var(--font-size-xl);
+            transition: transform var(--transition-base);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: calc(var(--safe-top) + 60px);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--surface);
+            z-index: 999;
+            transform: translateX(100%);
+            transition: transform var(--transition-slow) cubic-bezier(0.4, 0, 0.2, 1);
+            padding: var(--space-xl) var(--space-lg);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-slow);
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-lg);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-fast);
+            background: var(--surface-2);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--primary);
+            color: white;
+            transform: translateX(var(--space-sm));
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: calc(var(--safe-top) + 80px) var(--space-lg) var(--space-4xl);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23000000" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--space-lg);
+            background: linear-gradient(135deg, #ffffff, #e0f7fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: var(--font-size-lg);
+            opacity: 0.95;
+            margin-bottom: var(--space-3xl);
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xl);
+            margin-top: var(--space-4xl);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: var(--font-size-3xl);
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: var(--space-xs);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== QUICK FILTERS ===== */
+        .quick-filters {
+            position: sticky;
+            top: calc(var(--safe-top) + 60px);
+            z-index: 900;
+            background: var(--surface-1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: var(--space-md) var(--space-lg);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            white-space: nowrap;
+        }
+
+        .quick-filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-scroll {
+            display: inline-flex;
+            gap: var(--space-sm);
+        }
+
+        .filter-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-md) var(--space-lg);
+            background: var(--surface-2);
+            border: 2px solid transparent;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all var(--transition-fast);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .filter-chip:hover,
+        .filter-chip.active {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+
+        .filter-chip i {
+            font-size: var(--font-size-sm);
+        }
+
+        /* ===== SEARCH BAR ===== */
+        .search-container {
+            padding: var(--space-lg);
+            background: var(--surface);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .search-wrapper {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-4xl);
+            font-size: var(--font-size-base);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-full);
+            background: var(--surface-2);
+            transition: all var(--transition-base);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--surface);
+            box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: var(--space-lg);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+            pointer-events: none;
+        }
+
+        .search-clear {
+            position: absolute;
+            right: var(--space-lg);
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-tertiary);
+            width: var(--touch-target);
+            height: var(--touch-target);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .search-clear:hover {
+            background: var(--surface-2);
+            color: var(--text-primary);
+        }
+
+        /* ===== FEATURED INDUCTEE ===== */
+        .featured-card {
+            margin: var(--space-lg);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            transform: translateY(0);
+            transition: transform var(--transition-base);
+        }
+
+        .featured-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-weight: 800;
+            font-size: var(--font-size-sm);
+            z-index: 2;
+        }
+
+        .featured-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .featured-card:hover .featured-image img {
+            transform: scale(1.05);
+        }
+
+        .featured-content {
+            padding: var(--space-xl);
+        }
+
+        .featured-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 800;
+            margin-bottom: var(--space-xs);
+            line-height: 1.2;
+        }
+
+        .featured-subtitle {
+            font-size: var(--font-size-base);
+            opacity: 0.9;
+            margin-bottom: var(--space-lg);
+        }
+
+        .featured-description {
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            margin-bottom: var(--space-xl);
+            opacity: 0.95;
+        }
+
+        .featured-actions {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .btn-primary {
+            flex: 1;
+            background: white;
+            color: var(--primary);
+            border: none;
+            font-weight: 700;
+            font-size: var(--font-size-base);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+        }
+
+        .btn-primary:hover {
+            background: var(--surface-2);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+        }
+
+        /* ===== INDUCTEES GRID ===== */
+        .inductees-section {
+            padding: var(--space-xl) var(--space-lg);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: var(--space-xs);
+            background: var(--surface-2);
+            padding: var(--space-xs);
+            border-radius: var(--radius-lg);
+        }
+
+        .view-btn {
+            width: var(--touch-target);
+            height: var(--touch-target);
+            border-radius: var(--radius-md);
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .view-btn.active {
+            background: var(--surface);
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .inductees-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 768px) {
+            .inductees-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .inductees-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ===== INDUCTEE CARD ===== */
+        .inductee-card {
+            background: var(--surface);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            position: relative;
+            will-change: transform;
+        }
+
+        .inductee-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .inductee-badge {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: white;
+            z-index: 2;
+        }
+
+        .badge-academic { background: #2196F3; }
+        .badge-sports { background: #F44336; }
+        .badge-arts { background: #9C27B0; }
+        .badge-community { background: #FF9800; }
+        .badge-leadership { background: #009688; }
+
+        .inductee-image {
+            height: 160px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .inductee-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .inductee-card:hover .inductee-image img {
+            transform: scale(1.1);
+        }
+
+        .inductee-content {
+            padding: var(--space-xl);
+        }
+
+        .inductee-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-md);
+        }
+
+        .inductee-year {
+            font-size: var(--font-size-sm);
+            color: var(--text-tertiary);
+        }
+
+        .inductee-name {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            line-height: 1.2;
+        }
+
+        .inductee-role {
+            font-size: var(--font-size-base);
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+        }
+
+        .inductee-quote {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: var(--space-xl);
+            padding-left: var(--space-lg);
+            border-left: 3px solid var(--accent);
+        }
+
+        .inductee-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .inductee-legacy {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: var(--font-size-sm);
+            color: var(--text-tertiary);
+        }
+
+        .inductee-legacy i {
+            color: #FFD700;
+        }
+
+        .card-btn {
+            padding: var(--space-md) var(--space-lg);
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .card-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ===== LOAD MORE ===== */
+        .load-more {
+            padding: var(--space-3xl) var(--space-lg);
+            text-align: center;
+        }
+
+        .load-btn {
+            padding: var(--space-xl) var(--space-4xl);
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-md);
+        }
+
+        .load-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .load-btn:active {
+            transform: translateY(-2px);
+        }
+
+        /* ===== NOMINATION BANNER ===== */
+        .nomination-banner {
+            margin: var(--space-xl) var(--space-lg);
+            padding: var(--space-xl);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--radius-xl);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nomination-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.2;
+        }
+
+        .nomination-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .nomination-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 800;
+            margin-bottom: var(--space-md);
+        }
+
+        .nomination-text {
+            font-size: var(--font-size-base);
+            opacity: 0.95;
+            margin-bottom: var(--space-2xl);
+            line-height: 1.6;
+        }
+
+        .nomination-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: white;
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin: 0 auto var(--space-md);
+        }
+
+        .step-title {
+            font-weight: 700;
+            margin-bottom: var(--space-xs);
+        }
+
+        .step-description {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: var(--space-4xl) var(--space-lg) var(--space-5xl);
+            margin-top: var(--space-4xl);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-3xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .footer-section h3 {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(var(--space-xs));
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .social-link {
+            width: var(--touch-target);
+            height: var(--touch-target);
+            border-radius: 50%;
+            background: var(--surface-2);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-3xl);
+            margin-top: var(--space-3xl);
+            border-top: 1px solid var(--border-light);
+            color: var(--text-tertiary);
+            font-size: var(--font-size-sm);
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-lg);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn var(--transition-base);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            background: var(--surface);
+            border-radius: var(--radius-xl);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            animation: slideUp var(--transition-slow) cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(100px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            width: var(--touch-target);
+            height: var(--touch-target);
+            border-radius: 50%;
+            background: var(--surface-2);
+            border: none;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10001;
+            transition: all var(--transition-fast);
+        }
+
+        .modal-close:hover {
+            background: var(--surface);
+            transform: rotate(90deg);
+        }
+
+        .modal-content {
+            padding: var(--space-4xl) var(--space-2xl);
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: calc(var(--safe-bottom) + var(--space-lg));
+            right: var(--space-lg);
+            width: var(--touch-target);
+            height: var(--touch-target);
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all var(--transition-base);
+            z-index: 900;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ===== LOADING STATES ===== */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: var(--radius-md);
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* ===== PULL TO REFRESH ===== */
+        .pull-to-refresh {
+            position: fixed;
+            top: calc(var(--safe-top) + 60px);
+            left: 0;
+            right: 0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            background: var(--surface-1);
+            backdrop-filter: blur(20px);
+        }
+
+        .pull-to-refresh.active {
+            transform: translateY(0);
+        }
+
+        .pull-to-refresh-icon {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== HAPTIC FEEDBACK ===== */
+        @media (hover: hover) {
+            button:hover,
+            a:hover,
+            .filter-chip:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        /* ===== PREFERS-REDUCED-MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ===== DARK MODE ===== */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --surface: #1e1e1e;
+                --surface-1: rgba(30, 30, 30, 0.8);
+                --surface-2: #2d2d2d;
+                --text-primary: #ffffff;
+                --text-secondary: #b0b0b0;
+                --text-tertiary: #888888;
+                --border: rgba(255, 255, 255, 0.1);
+                --border-light: rgba(255, 255, 255, 0.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content -->
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="header-content">
+            <div class="logo-circle">
+                <img src="logo.png" alt="School Logo">
+            </div>
+            <div class="header-text">
+                <h1>Wall of Fame</h1>
+                <p>St Peters SSS Nsambya</p>
+            </div>
+        </div>
+        <button class="mobile-nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="nav-overlay" id="navOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="wall-of-fame.html" class="nav-link active"><i class="fas fa-trophy"></i> Wall of Fame</a></li>
+            <li><a href="nominate.html" class="nav-link"><i class="fas fa-edit"></i> Nominate</a></li>
+            <li><a href="criteria.html" class="nav-link"><i class="fas fa-list-check"></i> Criteria</a></li>
+            <li><a href="gallery.html" class="nav-link"><i class="fas fa-images"></i> Gallery</a></li>
+            <li><a href="contact.html" class="nav-link"><i class="fas fa-phone"></i> Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Celebrating Excellence</h1>
+            <p>Honoring outstanding alumni, faculty, and community members who inspire future generations.</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">156</span>
+                    <span class="stat-label">Inductees</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">42</span>
+                    <span class="stat-label">Years</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Filters -->
+    <div class="quick-filters">
+        <div class="filter-scroll">
+            <a href="#" class="filter-chip active" data-filter="all">
+                <i class="fas fa-star"></i> All
+            </a>
+            <a href="#" class="filter-chip" data-filter="academic">
+                <i class="fas fa-graduation-cap"></i> Academic
+            </a>
+            <a href="#" class="filter-chip" data-filter="sports">
+                <i class="fas fa-running"></i> Sports
+            </a>
+            <a href="#" class="filter-chip" data-filter="arts">
+                <i class="fas fa-palette"></i> Arts
+            </a>
+            <a href="#" class="filter-chip" data-filter="community">
+                <i class="fas fa-hands-helping"></i> Community
+            </a>
+            <a href="#" class="filter-chip" data-filter="leadership">
+                <i class="fas fa-users"></i> Leadership
+            </a>
+        </div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-container">
+        <div class="search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input type="search" class="search-input" placeholder="Search inductees..." id="searchInput">
+            <button class="search-clear" id="searchClear" aria-label="Clear search">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Featured Inductee -->
+    <section class="featured-card">
+        <div class="featured-badge">Featured Inductee</div>
+        <div class="featured-image">
+            <img src="unknown.jpeg" alt="To be updated">
+        </div>
+        <div class="featured-content">
+            <h2 class="featured-title">Dr. Sarah Mbeki</h2>
+            <p class="featured-subtitle">Class of 1998 • Nobel Laureate in Medicine</p>
+            <p class="featured-description">Groundbreaking research in tropical disease treatment has saved millions across Africa.</p>
+            <div class="featured-actions">
+                <button class="btn-primary" data-modal="sarah-mbeki">
+                    <i class="fas fa-info-circle"></i> Learn More
+                </button>
+                <button class="btn-secondary">
+                    <i class="fas fa-share-alt"></i> Share
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Inductees Section -->
+        <section class="inductees-section">
+            <div class="section-header">
+                <h2 class="section-title">All Inductees</h2>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid" aria-label="Grid view">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list" aria-label="List view">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="inductees-grid" id="inducteesGrid">
+                <!-- Inductee 1 -->
+                <article class="inductee-card" data-category="academic" data-year="2020">
+                    <span class="inductee-badge badge-academic">Academic</span>
+                    <div class="inductee-image">
+                        <img src="unknown.jpeg" alt="Professor James Kariuki">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-year">Class of 1985</span>
+                        </div>
+                        <h3 class="inductee-name">Professor James Kariuki</h3>
+                        <p class="inductee-role">NASA Space Scientist</p>
+                        <blockquote class="inductee-quote">
+                            "My teachers here taught me that the sky is not the limit."
+                        </blockquote>
+                        <div class="inductee-footer">
+                            <span class="inductee-legacy">
+                                <i class="fas fa-star"></i> Inducted 2020
+                            </span>
+                            <button class="card-btn" data-modal="james-kariuki">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Inductee 2 -->
+                <article class="inductee-card" data-category="sports" data-year="2019">
+                    <span class="inductee-badge badge-sports">Sports</span>
+                    <div class="inductee-image">
+                        <img src="unknown.jpeg" alt="To be updated">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-year">Class of 2010</span>
+                        </div>
+                        <h3 class="inductee-name">David Omondi</h3>
+                        <p class="inductee-role">Olympic Gold Medalist</p>
+                        <blockquote class="inductee-quote">
+                            "The track taught me discipline; my teachers taught me perseverance."
+                        </blockquote>
+                        <div class="inductee-footer">
+                            <span class="inductee-legacy">
+                                <i class="fas fa-star"></i> Inducted 2019
+                            </span>
+                            <button class="card-btn" data-modal="david-omondi">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Inductee 3 -->
+                <article class="inductee-card" data-category="arts" data-year="2021">
+                    <span class="inductee-badge badge-arts">Arts</span>
+                    <div class="inductee-image">
+                        <img src="unknown.jpeg" alt="To be updated">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-year">Class of 2005</span>
+                        </div>
+                        <h3 class="inductee-name">Grace Wangari</h3>
+                        <p class="inductee-role">Renowned Visual Artist</p>
+                        <blockquote class="inductee-quote">
+                            "Art allows us to see the world through different lenses."
+                        </blockquote>
+                        <div class="inductee-footer">
+                            <span class="inductee-legacy">
+                                <i class="fas fa-star"></i> Inducted 2021
+                            </span>
+                            <button class="card-btn" data-modal="grace-wangari">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Inductee 4 -->
+                <article class="inductee-card" data-category="community" data-year="2018">
+                    <span class="inductee-badge badge-community">Community</span>
+                    <div class="inductee-image">
+                        <img src="unknown.jpeg" alt="To be updated">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-year">Class of 1978</span>
+                        </div>
+                        <h3 class="inductee-name">Dr. Michael Okoth</h3>
+                        <p class="inductee-role">Public Health Pioneer</p>
+                        <blockquote class="inductee-quote">
+                            "Service to others is the rent we pay for our room on earth."
+                        </blockquote>
+                        <div class="inductee-footer">
+                            <span class="inductee-legacy">
+                                <i class="fas fa-star"></i> Inducted 2018
+                            </span>
+                            <button class="card-btn" data-modal="michael-okoth">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Inductee 5 -->
+                <article class="inductee-card" data-category="leadership" data-year="2022">
+                    <span class="inductee-badge badge-leadership">Leadership</span>
+                    <div class="inductee-image">
+                        <img src="unknown.jpeg" alt="To be updated">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-year">Class of 1995</span>
+                        </div>
+                        <h3 class="inductee-name">Rebecca Atim</h3>
+                        <p class="inductee-role">Supreme Court Justice</p>
+                        <blockquote class="inductee-quote">
+                            "True leadership is about making justice accessible to all."
+                        </blockquote>
+                        <div class="inductee-footer">
+                            <span class="inductee-legacy">
+                                <i class="fas fa-star"></i> Inducted 2022
+                            </span>
+                            <button class="card-btn" data-modal="rebecca-atim">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Inductee 6 -->
+                <article class="inductee-card" data-category="academic" data-year="2017">
+                    <span class="inductee-badge badge-academic">Academic</span>
+                    <div class="inductee-image">
+                        <img src="unknown.jpeg" alt="To be updated">
+                    </div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-year">Class of 1980</span>
+                        </div>
+                        <h3 class="inductee-name">Professor John Mwangi</h3>
+                        <p class="inductee-role">Renowned Economist</p>
+                        <blockquote class="inductee-quote">
+                            "Education is the most powerful investment a society can make."
+                        </blockquote>
+                        <div class="inductee-footer">
+                            <span class="inductee-legacy">
+                                <i class="fas fa-star"></i> Inducted 2017
+                            </span>
+                            <button class="card-btn" data-modal="john-mwangi">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more">
+                <button class="load-btn" id="loadMoreBtn">
+                    <i class="fas fa-spinner"></i> Load More Inductees
+                </button>
+            </div>
+        </section>
+
+        <!-- Nomination Banner -->
+        <section class="nomination-banner">
+            <div class="nomination-content">
+                <h2 class="nomination-title">Know Someone Worthy?</h2>
+                <p class="nomination-text">Nominate outstanding alumni, faculty, or community members for the Wall of Fame.</p>
+                
+                <div class="nomination-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Submit Nomination</h3>
+                        <p class="step-description">Complete the online form with candidate details</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Committee Review</h3>
+                        <p class="step-description">Selection committee reviews quarterly</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Induction Ceremony</h3>
+                        <p class="step-description">Honored at annual ceremony</p>
+                    </div>
+                </div>
+                
+                <button class="btn-primary" style="min-width: 200px;">
+                    <i class="fas fa-edit"></i> Submit Nomination
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Wall of Fame</h3>
+                <p>Celebrating excellence since 1981. Honoring those who make a difference.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="nominate.html"><i class="fas fa-chevron-right"></i> Nominate</a></li>
+                    <li><a href="criteria.html"><i class="fas fa-chevron-right"></i> Selection Criteria</a></li>
+                    <li><a href="committee.html"><i class="fas fa-chevron-right"></i> Committee</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Photo Gallery</a></li>
+                    <li><a href="history.html"><i class="fas fa-chevron-right"></i> History Timeline</a></li>
+                    <li><a href="stories.html"><i class="fas fa-chevron-right"></i> Success Stories</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:walloffame@stpetersnsambya.ac.ug"><i class="fas fa-envelope"></i> Email</a></li>
+                    <li><a href="tel:+256414123456"><i class="fas fa-phone"></i> +256 414 123 456</a></li>
+                    <li><a href="visit.html"><i class="fas fa-map-marker-alt"></i> Visit Display</a></li>
+                    <li><a href="donate.html"><i class="fas fa-hand-holding-heart"></i> Support Us</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 St Peters SSS Nsambya Wall of Fame. All rights reserved.</p>
+            <p>Maintained by Alumni Relations • Updated November 2023</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content" id="modalContent">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Pull to Refresh Indicator -->
+    <div class="pull-to-refresh" id="pullToRefresh">
+        <i class="fas fa-sync-alt pull-to-refresh-icon"></i>
+    </div>
+
+    <script>
+        // ===== MOBILE NAVIGATION =====
+        const navToggle = document.getElementById('navToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        function toggleNav() {
+            mobileNav.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+            
+            // Update toggle icon
+            const icon = navToggle.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+        
+        navToggle.addEventListener('click', toggleNav);
+        navOverlay.addEventListener('click', toggleNav);
+        
+        // Close nav on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', toggleNav);
+        });
+        
+        // ===== FILTERING =====
+        const filterChips = document.querySelectorAll('.filter-chip');
+        const inducteeCards = document.querySelectorAll('.inductee-card');
+        
+        filterChips.forEach(chip => {
+            chip.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all chips
+                filterChips.forEach(c => c.classList.remove('active'));
+                // Add active class to clicked chip
+                chip.classList.add('active');
+                
+                const filter = chip.dataset.filter;
+                
+                // Filter cards with smooth animation
+                inducteeCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // ===== SEARCH =====
+        const searchInput = document.getElementById('searchInput');
+        const searchClear = document.getElementById('searchClear');
+        
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            searchClear.style.display = searchTerm ? 'flex' : 'none';
+            
+            // Search through cards
+            inducteeCards.forEach(card => {
+                const name = card.querySelector('.inductee-name').textContent.toLowerCase();
+                const role = card.querySelector('.inductee-role').textContent.toLowerCase();
+                const quote = card.querySelector('.inductee-quote').textContent.toLowerCase();
+                
+                if (name.includes(searchTerm) || role.includes(searchTerm) || quote.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+        
+        searchClear.addEventListener('click', () => {
+            searchInput.value = '';
+            searchClear.style.display = 'none';
+            
+            // Show all cards
+            inducteeCards.forEach(card => {
+                card.style.display = 'block';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 10);
+            });
+        });
+        
+        // ===== VIEW TOGGLE =====
+        const viewButtons = document.querySelectorAll('.view-btn');
+        const inducteesGrid = document.getElementById('inducteesGrid');
+        
+        viewButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                viewButtons.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const view = btn.dataset.view;
+                
+                // Smooth transition
+                inducteesGrid.style.opacity = '0.5';
+                inducteesGrid.style.transform = 'scale(0.98)';
+                
+                setTimeout(() => {
+                    if (view === 'list') {
+                        inducteesGrid.style.gridTemplateColumns = '1fr';
+                        inducteeCards.forEach(card => {
+                            card.style.display = 'flex';
+                            card.querySelector('.inductee-image').style.flex = '0 0 120px';
+                            card.querySelector('.inductee-image').style.height = 'auto';
+                        });
+                    } else {
+                        inducteesGrid.style.gridTemplateColumns = '';
+                        inducteeCards.forEach(card => {
+                            card.style.display = 'block';
+                            card.querySelector('.inductee-image').style.flex = '';
+                            card.querySelector('.inductee-image').style.height = '';
+                        });
+                    }
+                    
+                    inducteesGrid.style.opacity = '1';
+                    inducteesGrid.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+        
+        // ===== MODAL =====
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.getElementById('modalClose');
+        const modalContent = document.getElementById('modalContent');
+        const cardButtons = document.querySelectorAll('.card-btn, .btn-primary');
+        
+        // Sample modal content
+        const modalData = {
+            'sarah-mbeki': {
+                title: 'Dr. Sarah Mbeki',
+                subtitle: 'Class of 1998 • Nobel Laureate in Medicine',
+                image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                achievements: [
+                    'Nobel Prize in Medicine 2022',
+                    'PhD in Tropical Medicine, University of Cambridge',
+                    'Founded 3 rural medical clinics in Uganda',
+                    'Published 45 peer-reviewed research papers',
+                    'UN Health Ambassador for Africa'
+                ],
+                story: 'Dr. Sarah Mbeki\'s journey began in our school\'s modest science laboratory, where her chemistry teacher noticed her exceptional curiosity and attention to detail. After graduating top of her class, she earned a full scholarship to study medicine at Makerere University.',
+                impact: 'Her groundbreaking research on malaria treatment protocols has been adopted by the World Health Organization and is estimated to have saved over 2 million lives across Sub-Saharan Africa.',
+                quote: '"My teachers at St Peters taught me that no problem is too big to solve if you approach it with curiosity and determination."'
+            }
+        };
+        
+        function openModal(inducteeId) {
+            const data = modalData[inducteeId] || modalData['sarah-mbeki'];
+            
+            modalContent.innerHTML = `
+                <div style="display: grid; gap: 2rem;">
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+                        <div>
+                            <img src="${data.image}" alt="${data.title}" style="width: 100%; border-radius: 16px; max-height: 300px; object-fit: cover;">
+                        </div>
+                        <div>
+                            <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--primary);">${data.title}</h2>
+                            <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem;">${data.subtitle}</p>
+                            
+                            <div style="background: var(--surface-2); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 1rem;">Achievements</h3>
+                                <ul style="list-style: none; display: grid; gap: 0.5rem;">
+                                    ${data.achievements.map(achievement => `
+                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <i class="fas fa-check" style="color: var(--primary);"></i>
+                                            <span>${achievement}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; gap: 1.5rem;">
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">The Journey</h3>
+                            <p style="line-height: 1.6; color: var(--text-primary);">${data.story}</p>
+                        </div>
+                        
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">Impact & Legacy</h3>
+                            <p style="line-height: 1.6; color: var(--text-primary);">${data.impact}</p>
+                        </div>
+                        
+                        <blockquote style="border-left: 4px solid var(--accent); padding-left: 1rem; font-style: italic; color: var(--text-secondary);">
+                            ${data.quote}
+                        </blockquote>
+                    </div>
+                </div>
+            `;
+            
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        cardButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const inducteeId = btn.dataset.modal;
+                if (inducteeId) {
+                    openModal(inducteeId);
+                }
+            });
+        });
+        
+        modalClose.addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // ===== BACK TO TOP =====
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // ===== PULL TO REFRESH =====
+        const pullToRefresh = document.getElementById('pullToRefresh');
+        let touchStartY = 0;
+        let isRefreshing = false;
+        
+        window.addEventListener('touchstart', (e) => {
+            if (window.pageYOffset === 0) {
+                touchStartY = e.touches[0].clientY;
+            }
+        });
+        
+        window.addEventListener('touchmove', (e) => {
+            if (!isRefreshing && window.pageYOffset === 0 && touchStartY > 0) {
+                const touchY = e.touches[0].clientY;
+                const pullDistance = touchY - touchStartY;
+                
+                if (pullDistance > 0) {
+                    e.preventDefault();
+                    pullToRefresh.style.transform = `translateY(${Math.min(pullDistance, 60)}px)`;
+                    
+                    if (pullDistance > 100) {
+                        pullToRefresh.classList.add('active');
+                        isRefreshing = true;
+                        
+                        // Simulate refresh
+                        setTimeout(() => {
+                            pullToRefresh.classList.remove('active');
+                            isRefreshing = false;
+                            touchStartY = 0;
+                            
+                            // Show refresh notification
+                            showNotification('Content refreshed');
+                        }, 1000);
+                    }
+                }
+            }
+        });
+        
+        window.addEventListener('touchend', () => {
+            if (!isRefreshing) {
+                pullToRefresh.style.transform = 'translateY(-100%)';
+                touchStartY = 0;
+            }
+        });
+        
+        // ===== LOAD MORE =====
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        
+        loadMoreBtn.addEventListener('click', () => {
+            // Add loading state
+            loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            loadMoreBtn.disabled = true;
+            
+            // Simulate loading
+            setTimeout(() => {
+                // Add more cards (in real app, this would be an API call)
+                const newCard = document.createElement('article');
+                newCard.className = 'inductee-card';
+                newCard.innerHTML = `
+                    <span class="inductee-badge badge-academic">Academic</span>
+                    <div class="inductee-image skeleton" style="height: 160px;"></div>
+                    <div class="inductee-content">
+                        <div class="inductee-header">
+                            <span class="inductee-year skeleton" style="width: 80px; height: 20px;"></span>
+                        </div>
+                        <h3 class="inductee-name skeleton" style="width: 70%; height: 24px; margin-bottom: 8px;"></h3>
+                        <p class="inductee-role skeleton" style="width: 60%; height: 20px; margin-bottom: 16px;"></p>
+                        <blockquote class="inductee-quote skeleton" style="height: 60px;"></blockquote>
+                        <div class="inductee-footer">
+                            <span class="inductee-legacy skeleton" style="width: 100px; height: 20px;"></span>
+                            <button class="card-btn skeleton" style="width: 80px; height: 40px;"></button>
+                        </div>
+                    </div>
+                `;
+                
+                inducteesGrid.appendChild(newCard);
+                
+                // Simulate content loading
+                setTimeout(() => {
+                    newCard.innerHTML = `
+                        <span class="inductee-badge badge-academic">Academic</span>
+                        <div class="inductee-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="New Inductee">
+                        </div>
+                        <div class="inductee-content">
+                            <div class="inductee-header">
+                                <span class="inductee-year">Class of 2015</span>
+                            </div>
+                            <h3 class="inductee-name">Dr. Alex Kamau</h3>
+                            <p class="inductee-role">Tech Entrepreneur</p>
+                            <blockquote class="inductee-quote">
+                                "Innovation begins with asking the right questions."
+                            </blockquote>
+                            <div class="inductee-footer">
+                                <span class="inductee-legacy">
+                                    <i class="fas fa-star"></i> New Inductee
+                                </span>
+                                <button class="card-btn" data-modal="alex-kamau">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }, 500);
+                
+                // Reset button
+                loadMoreBtn.innerHTML = '<i class="fas fa-spinner"></i> Load More Inductees';
+                loadMoreBtn.disabled = false;
+                
+                // Show notification
+                showNotification('New inductees loaded');
+            }, 1000);
+        });
+        
+        // ===== HELPER FUNCTIONS =====
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%) translateY(100px);
+                background: var(--primary);
+                color: white;
+                padding: var(--space-md) var(--space-lg);
+                border-radius: var(--radius-lg);
+                font-weight: 600;
+                z-index: 10000;
+                opacity: 0;
+                transition: all 0.3s ease;
+                box-shadow: var(--shadow-lg);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateX(-50%) translateY(0)';
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(-50%) translateY(100px)';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+        
+        // ===== TOUCH INTERACTIONS =====
+        inducteeCards.forEach(card => {
+            let touchStartX = 0;
+            
+            card.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+            });
+            
+            card.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].clientX;
+                const swipeDistance = touchEndX - touchStartX;
+                
+                // Detect swipe left (for sharing/quick actions)
+                if (swipeDistance < -50) {
+                    card.style.transform = 'translateX(-60px)';
+                    setTimeout(() => {
+                        card.style.transform = '';
+                    }, 300);
+                }
+            });
+        });
+        
+        // ===== LAZY LOADING =====
+        const lazyImages = document.querySelectorAll('img');
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src || img.src;
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        
+        lazyImages.forEach(img => imageObserver.observe(img));
+        
+        // ===== PERFORMANCE OPTIMIZATIONS =====
+        // Debounce scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                // Handle scroll-based operations
+            }, 100);
+        });
+        
+        console.log('Mobile-optimized Wall of Fame loaded');
+    </script>
+</body>
+</html>t;
+                    img.src = img.dataset.src || img.src;
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        
+        lazyImages.forEach(img => imageObserver.observe(img));
+        
+        // ===== PERFORMANCE OPTIMIZATIONS =====
+        // Debounce scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                // Handle scroll-based operations
+            }, 100);
+        });
+        
+        console.log('Mobile-optimized Wall of Fame loaded');
+    </script>
+</body>
+</html>
