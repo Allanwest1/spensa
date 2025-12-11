@@ -2,674 +2,332 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-    <title>St Peters SSS Nsambya - Wall of Fame</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St Peters SSS Nsambya - School Functions Updates</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* ===== MOBILE-FIRST CSS RESET ===== */
-        :root {
-            /* Color Palette - Optimized for mobile screens */
-            --primary: #2E7D32;
-            --primary-dark: #1B5E20;
-            --primary-light: #4CAF50;
-            --accent: #8BC34A;
-            
-            /* Mobile-optimized neutrals */
-            --bg: #F8F9FA;
-            --surface: #FFFFFF;
-            --surface-1: rgba(255, 255, 255, 0.8);
-            --surface-2: #F5F5F5;
-            --text-primary: #212121;
-            --text-secondary: #666666;
-            --text-tertiary: #888888;
-            --border: rgba(0, 0, 0, 0.1);
-            --border-light: rgba(0, 0, 0, 0.05);
-            
-            /* Touch-friendly sizes */
-            --touch-target: 44px;
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            --radius-full: 9999px;
-            
-            /* Mobile-optimized spacing */
-            --space-xs: 0.25rem;  /* 4px */
-            --space-sm: 0.5rem;   /* 8px */
-            --space-md: 0.75rem;  /* 12px */
-            --space-lg: 1rem;     /* 16px */
-            --space-xl: 1.25rem;  /* 20px */
-            --space-2xl: 1.5rem;  /* 24px */
-            --space-3xl: 2rem;    /* 32px */
-            --space-4xl: 2.5rem;  /* 40px */
-            --space-5xl: 3rem;    /* 48px */
-            
-            /* Mobile-optimized typography */
-            --font-size-xs: 0.75rem;   /* 12px */
-            --font-size-sm: 0.875rem;  /* 14px */
-            --font-size-base: 1rem;    /* 16px */
-            --font-size-lg: 1.125rem;  /* 18px */
-            --font-size-xl: 1.25rem;   /* 20px */
-            --font-size-2xl: 1.5rem;   /* 24px */
-            --font-size-3xl: 1.75rem;  /* 28px */
-            --font-size-4xl: 2rem;     /* 32px */
-            
-            /* Mobile-optimized shadows */
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
-            
-            /* Smooth transitions */
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* Safe area insets for modern phones */
-            --safe-top: env(safe-area-inset-top, 0px);
-            --safe-bottom: env(safe-area-inset-bottom, 0px);
-            --safe-left: env(safe-area-inset-left, 0px);
-            --safe-right: env(safe-area-inset-right, 0px);
-        }
-
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: var(--font-size-base);
-            line-height: 1.5;
-            color: var(--text-primary);
-            background: var(--bg);
-            overflow-x: hidden;
-            padding-top: var(--safe-top);
-            padding-bottom: var(--safe-bottom);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* ===== TOUCH-FRIENDLY ELEMENTS ===== */
-        button,
-        a,
-        input,
-        select {
-            font-size: inherit;
-            font-family: inherit;
-        }
-
-        button,
-        .btn {
-            min-height: var(--touch-target);
-            min-width: var(--touch-target);
-            padding: var(--space-md) var(--space-lg);
-            border-radius: var(--radius-lg);
-        }
-
-        /* ===== SKIP LINK ===== */
-        .skip-link {
-            position: fixed;
-            top: calc(var(--safe-top) + var(--space-sm));
-            left: var(--space-lg);
-            background: var(--primary);
-            color: white;
-            padding: var(--space-md) var(--space-lg);
-            border-radius: var(--radius-sm);
-            text-decoration: none;
-            font-weight: 600;
-            z-index: 9999;
-            transform: translateY(-100%);
-            transition: transform var(--transition-base);
-        }
-
-        .skip-link:focus {
-            transform: translateY(0);
-        }
-
-        /* ===== MOBILE HEADER ===== */
-        .mobile-header {
-            position: fixed;
-            top: var(--safe-top);
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            padding: var(--space-sm) var(--space-lg);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            flex: 1;
-        }
-
-        .logo-circle {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid var(--primary);
-            flex-shrink: 0;
-        }
-
-        .logo-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .header-text h1 {
-            font-size: var(--font-size-lg);
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1.2;
-        }
-
-        .header-text p {
-            font-size: var(--font-size-xs);
-            color: var(--text-secondary);
-        }
-
-        /* ===== MOBILE NAVIGATION ===== */
-        .mobile-nav-toggle {
-            width: var(--touch-target);
-            height: var(--touch-target);
-            border-radius: var(--radius-md);
-            background: none;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .mobile-nav-toggle i {
-            font-size: var(--font-size-xl);
-            transition: transform var(--transition-base);
-        }
-
-        .mobile-nav {
-            position: fixed;
-            top: calc(var(--safe-top) + 60px);
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--surface);
-            z-index: 999;
-            transform: translateX(100%);
-            transition: transform var(--transition-slow) cubic-bezier(0.4, 0, 0.2, 1);
-            padding: var(--space-xl) var(--space-lg);
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .mobile-nav.active {
-            transform: translateX(0);
-        }
-
-        .nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
-            transition: all var(--transition-slow);
-        }
-
-        .nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-        }
-
-        .nav-link {
-            display: block;
-            padding: var(--space-lg);
-            font-size: var(--font-size-lg);
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-            border-radius: var(--radius-lg);
-            transition: all var(--transition-fast);
-            background: var(--surface-2);
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background: var(--primary);
-            color: white;
-            transform: translateX(var(--space-sm));
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            padding: calc(var(--safe-top) + 80px) var(--space-lg) var(--space-4xl);
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23000000" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            opacity: 0.1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: var(--font-size-4xl);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: var(--space-lg);
-            background: linear-gradient(135deg, #ffffff, #e0f7fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: var(--font-size-lg);
-            opacity: 0.95;
-            margin-bottom: var(--space-3xl);
-            line-height: 1.6;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-xl);
-            margin-top: var(--space-4xl);
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            display: block;
-            font-size: var(--font-size-3xl);
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: var(--space-xs);
-        }
-
-        .stat-label {
-            font-size: var(--font-size-sm);
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* ===== QUICK FILTERS ===== */
-        .quick-filters {
-            position: sticky;
-            top: calc(var(--safe-top) + 60px);
-            z-index: 900;
-            background: var(--surface-1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            padding: var(--space-md) var(--space-lg);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            white-space: nowrap;
-        }
-
-        .quick-filters::-webkit-scrollbar {
-            display: none;
-        }
-
-        .filter-scroll {
-            display: inline-flex;
-            gap: var(--space-sm);
-        }
-
-        .filter-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            padding: var(--space-md) var(--space-lg);
-            background: var(--surface-2);
-            border: 2px solid transparent;
-            border-radius: var(--radius-full);
-            font-weight: 600;
-            font-size: var(--font-size-sm);
-            color: var(--text-secondary);
-            text-decoration: none;
-            white-space: nowrap;
-            transition: all var(--transition-fast);
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .filter-chip:hover,
-        .filter-chip.active {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.05);
-            border-color: var(--primary);
-        }
-
-        .filter-chip i {
-            font-size: var(--font-size-sm);
-        }
-
-        /* ===== SEARCH BAR ===== */
-        .search-container {
-            padding: var(--space-lg);
-            background: var(--surface);
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .search-wrapper {
-            position: relative;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-4xl);
-            font-size: var(--font-size-base);
-            border: 2px solid var(--border);
-            border-radius: var(--radius-full);
-            background: var(--surface-2);
-            transition: all var(--transition-base);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: var(--surface);
-            box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: var(--space-lg);
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-tertiary);
-            pointer-events: none;
-        }
-
-        .search-clear {
-            position: absolute;
-            right: var(--space-lg);
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--text-tertiary);
-            width: var(--touch-target);
-            height: var(--touch-target);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .search-clear:hover {
-            background: var(--surface-2);
-            color: var(--text-primary);
-        }
-
-        /* ===== FEATURED INDUCTEE ===== */
-        .featured-card {
-            margin: var(--space-lg);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: white;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            transform: translateY(0);
-            transition: transform var(--transition-base);
-        }
-
-        .featured-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .featured-badge {
-            position: absolute;
-            top: var(--space-lg);
-            right: var(--space-lg);
-            background: var(--accent);
-            color: var(--primary-dark);
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--radius-full);
-            font-weight: 800;
-            font-size: var(--font-size-sm);
-            z-index: 2;
-        }
-
-        .featured-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .featured-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-slow);
-        }
-
-        .featured-card:hover .featured-image img {
-            transform: scale(1.05);
-        }
-
-        .featured-content {
-            padding: var(--space-xl);
-        }
-
-        .featured-title {
-            font-size: var(--font-size-2xl);
-            font-weight: 800;
-            margin-bottom: var(--space-xs);
-            line-height: 1.2;
-        }
-
-        .featured-subtitle {
-            font-size: var(--font-size-base);
-            opacity: 0.9;
-            margin-bottom: var(--space-lg);
-        }
-
-        .featured-description {
-            font-size: var(--font-size-base);
-            line-height: 1.6;
-            margin-bottom: var(--space-xl);
-            opacity: 0.95;
-        }
-
-        .featured-actions {
-            display: flex;
-            gap: var(--space-md);
-        }
-
-        .btn-primary {
-            flex: 1;
-            background: white;
-            color: var(--primary);
-            border: none;
-            font-weight: 700;
-            font-size: var(--font-size-base);
-            cursor: pointer;
-            transition: all var(--transition-base);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-sm);
-        }
-
-        .btn-primary:hover {
-            background: var(--surface-2);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            font-weight: 600;
-            font-size: var(--font-size-base);
-            cursor: pointer;
-            transition: all var(--transition-base);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: white;
-        }
-
-        /* ===== INDUCTEES GRID ===== */
-        .inductees-section {
-            padding: var(--space-xl) var(--space-lg);
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: var(--space-2xl);
-        }
-
-        .section-title {
-            font-size: var(--font-size-2xl);
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .view-toggle {
-            display: flex;
-            gap: var(--space-xs);
-            background: var(--surface-2);
-            padding: var(--space-xs);
-            border-radius: var(--radius-lg);
-        }
-
-        .view-btn {
-            width: var(--touch-target);
-            height: var(--touch-target);
-            border-radius: var(--radius-md);
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .view-btn.active {
-            background: var(--surface);
-            color: var(--primary);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .inductees-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-xl);
-        }
-
-        @media (min-width: 768px) {
-            .inductees-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .inductees-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* ===== INDUCTEE CARD ===== */
-        .inductee-card {
-            background: var(--surface);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all var(--transition-base);
-            position: relative;
-            will-change: transform;
-        }
-
-        .inductee-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .inductee-badge {
-            position: absolute;
-            top: var(--space-lg);
-            right: var(--space-lg);
-            padding: var(--space-xs) var(--space-md);
-            border-radius: var(--radius-full);
-            font-size: var(--font-size-xs);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: white;
-            z-index: 2;
-        }
-
-        .badge-academic { background: #2196F3; }
-        .badge-sports { background: #F44336; }
-        .badge-arts { background: #9C27B0; }
-        .badge-community { background: #FF9800; }
-        .badge-leadership { background: #009688; }
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip to content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-circle">
+                        <img src="logo.png" alt="St Peters SSS Nsambya Logo" class="logo-img">
+                    </div>
+                    <div class="logo-text">
+                        <h1>St Peters SSS Nsambya</h1>
+                        <p class="school-motto">Fides Et Labor</p>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="main-nav" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="sports.html" class="nav-link">Sports</a></li>
+                    <li class="nav-item"><a href="academics.html" class="nav-link">Academics</a></li>
+                    <li class="nav-item"><a href="school-functions.html" class="nav-link active">School Functions</a></li>
+                    <li class="nav-item"><a href="clubs.html" class="nav-link">Clubs</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search and mobile toggle -->
+            <div class="header-actions">
+                <div class="search-container" role="search">
+                    <input type="search" id="searchInput" placeholder="Search updates..." aria-label="Search school function updates">
+                    <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title">School Functions & Events</h1>
+                <p class="page-subtitle">Stay updated with all school activities, events, and important announcements</p>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">All Updates</button>
+                    <button class="filter-btn" data-filter="upcoming">Upcoming Events</button>
+                    <button class="filter-btn" data-filter="past">Past Events</button>
+                    <button class="filter-btn" data-filter="announcements">Announcements</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updates Container -->
+        <div class="container">
+            <div class="updates-grid">
+                <!-- Article 1: Sports Day -->
+                <article class="update-card" data-category="upcoming">
+                    <div class="update-header">
+                        <span class="update-category sports-category">Sports</span>
+                        <time class="update-date" datetime="2023-11-25T08:00:00">November 25, 2023 • 8:00 AM</time>
+                    </div>
+                    <div class="update-content">
+                        <h3 class="update-title">Annual Sports Day 2023</h3>
+                        <p class="update-excerpt">Join us for our biggest sports event of the year featuring track and field competitions, team sports, and special performances. All students, parents, and alumni are invited to cheer on our athletes.</p>
+                        <div class="update-meta">
+                            <span class="meta-item"><i class="fas fa-map-marker-alt"></i> School Sports Ground</span>
+                            <span class="meta-item"><i class="fas fa-user-friends"></i> All Students & Parents</span>
+                        </div>
+                    </div>
+                    <div class="update-footer">
+                        <a href="sports-day-details.html" class="read-more">Read Full Details <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn" aria-label="Save this update"><i class="far fa-bookmark"></i></button>
+                    </div>
+                </article>
+
+                <!-- Article 2: Prize Giving Day -->
+                <article class="update-card" data-category="upcoming">
+                    <div class="update-header">
+                        <span class="update-category academic-category">Academic</span>
+                        <time class="update-date" datetime="2023-12-15T10:00:00">December 15, 2023 • 10:00 AM</time>
+                    </div>
+                    <div class="update-content">
+                        <h3 class="update-title">Annual Prize Giving Day Ceremony</h3>
+                        <p class="update-excerpt">Celebrating academic excellence and outstanding achievements across all subjects. Special guest speaker: Dr. Jane Mbeki, renowned educator and author.</p>
+                        <div class="update-meta">
+                            <span class="meta-item"><i class="fas fa-map-marker-alt"></i> School Auditorium</span>
+                            <span class="meta-item"><i class="fas fa-user-friends"></i> Invited Guests & Awardees</span>
+                        </div>
+                    </div>
+                    <div class="update-footer">
+                        <a href="prize-giving-details.html" class="read-more">View Award List & Schedule <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn" aria-label="Save this update"><i class="far fa-bookmark"></i></button>
+                    </div>
+                </article>
+
+                <!-- Article 3: Cultural Day -->
+                <article class="update-card" data-category="past">
+                    <div class="update-header">
+                        <span class="update-category cultural-category">Cultural</span>
+                        <time class="update-date" datetime="2023-10-20T09:00:00">October 20, 2023 • 9:00 AM</time>
+                    </div>
+                    <div class="update-content">
+                        <h3 class="update-title">Cultural Day Celebration 2023</h3>
+                        <p class="update-excerpt">Our annual celebration of Uganda's diverse cultures featuring traditional dances, music, food, and attire from different regions. This year's theme: "Unity in Diversity".</p>
+                        <div class="update-meta">
+                            <span class="meta-item"><i class="fas fa-map-marker-alt"></i> School Grounds</span>
+                            <span class="meta-item"><i class="fas fa-user-friends"></i> All Students & Staff</span>
+                        </div>
+                    </div>
+                    <div class="update-footer">
+                        <a href="cultural-day-gallery.html" class="read-more">View Event Gallery <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn" aria-label="Save this update"><i class="far fa-bookmark"></i></button>
+                    </div>
+                </article>
+
+                <!-- Article 4: Science Fair -->
+                <article class="update-card" data-category="past">
+                    <div class="update-header">
+                        <span class="update-category academic-category">Academic</span>
+                        <time class="update-date" datetime="2023-09-18T08:30:00">September 18, 2023 • 8:30 AM</time>
+                    </div>
+                    <div class="update-content">
+                        <h3 class="update-title">Annual Science & Innovation Fair</h3>
+                        <p class="update-excerpt">Students showcase innovative projects and experiments in physics, chemistry, biology, and technology. External judges from Makerere University will evaluate projects.</p>
+                        <div class="update-meta">
+                            <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Science Block</span>
+                            <span class="meta-item"><i class="fas fa-user-friends"></i> Open to Public</span>
+                        </div>
+                    </div>
+                    <div class="update-footer">
+                        <a href="science-fair-results.html" class="read-more">See Winning Projects <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn" aria-label="Save this update"><i class="far fa-bookmark"></i></button>
+                    </div>
+                </article>
+
+                <!-- Article 5: Parent-Teacher Meeting -->
+                <article class="update-card" data-category="upcoming">
+                    <div class="update-header">
+                        <span class="update-category announcement-category">Announcement</span>
+                        <time class="update-date" datetime="2023-11-30T14:00:00">November 30, 2023 • 2:00 PM</time>
+                    </div>
+                    <div class="update-content">
+                        <h3 class="update-title">Term 3 Parent-Teacher Meeting</h3>
+                        <p class="update-excerpt">Parents are invited to discuss their child's academic progress with teachers. Please book your appointment slot through the parent portal or school office.</p>
+                        <div class="update-meta">
+                            <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Classrooms & Staff Room</span>
+                            <span class="meta-item"><i class="fas fa-user-friends"></i> Parents & Guardians</span>
+                        </div>
+                    </div>
+                    <div class="update-footer">
+                        <a href="ptm-booking.html" class="read-more">Book Your Appointment <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn" aria-label="Save this update"><i class="far fa-bookmark"></i></button>
+                    </div>
+                </article>
+
+                <!-- Article 6: Alumni Homecoming -->
+                <article class="update-card" data-category="upcoming">
+                    <div class="update-header">
+                        <span class="update-category alumni-category">Alumni</span>
+                        <time class="update-date" datetime="2023-12-10T11:00:00">December 10, 2023 • 11:00 AM</time>
+                    </div>
+                    <div class="update-content">
+                        <h3 class="update-title">Alumni Homecoming & Networking Event</h3>
+                        <p class="update-excerpt">Graduates from classes 1990-2020 are invited for a special reunion. Featuring campus tours, networking sessions, and a keynote address by distinguished alumni.</p>
+                        <div class="update-meta">
+                            <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Main Hall & Campus</span>
+                            <span class="meta-item"><i class="fas fa-user-friends"></i> Alumni Only</span>
+                        </div>
+                    </div>
+                    <div class="update-footer">
+                        <a href="alumni-registration.html" class="read-more">Register for Event <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn" aria-label="Save this update"><i class="far fa-bookmark"></i></button>
+                    </div>
+                </article>
+
+                <!-- Article 7: Library Week -->
+                <article class="update-card" data-category="past">
+                    <div class="update-header">
+                        <span class="update-category academic-category">Academic</span>
+                        <time class="update-date" datetime="2023-08-07T08:00:00">August 7-11, 2023 • All Day</time>
+                    </div>
+                    <div class="update-content">
+                        <h3 class="update-title">Library Week & Book Fair</h3>
+                        <p class="update-excerpt">A week-long celebration of reading with author visits, book discussions, and a book fair featuring educational publishers. Special activities for all age groups.</p>
+                        <div class="update-meta">
+                            <span class="meta-item"><i class="fas fa-map-marker-alt"></i> School Library</span>
+                            <span class="meta-item"><i class="fas fa-user-friends"></i> Students & Staff</span>
+                        </div>
+                    </div>
+                    <div class="update-footer">
+                        <a href="library-week-report.html" class="read-more">Read Event Report <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn" aria-label="Save this update"><i class="far fa-bookmark"></i></button>
+                    </div>
+                </article>
+
+                <!-- Article 8: Career Day -->
+                <article class="update-card" data-category="upcoming">
+                    <div class="update-header">
+                        <span class="update-category career-category">Career</span>
+                        <time class="update-date" datetime="2024-01-22T09:00:00">January 22, 2024 • 9:00 AM</time>
+                    </div>
+                    <div class="update-content">
+                        <h3 class="update-title">Annual Career Guidance Day</h3>
+                        <p class="update-excerpt">Professionals from various fields will conduct workshops and one-on-one sessions to guide students on career choices, university applications, and skill development.</p>
+                        <div class="update-meta">
+                            <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Multipurpose Hall</span>
+                            <span class="meta-item"><i class="fas fa-user-friends"></i> S.4-S.6 Students</span>
+                        </div>
+                    </div>
+                    <div class="update-footer">
+                        <a href="career-day-schedule.html" class="read-more">View Workshop Schedule <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn" aria-label="Save this update"><i class="far fa-bookmark"></i></button>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More Button (for dynamic loading) -->
+            <div class="load-more-container">
+                <button id="loadMoreBtn" class="load-more-btn">Load More Updates</button>
+                <div class="updates-count">
+                    Showing <span id="shownCount">8</span> of <span id="totalCount">24</span> updates
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar (for larger screens) -->
+        <aside class="sidebar" aria-label="Additional Information">
+            <div class="sidebar-container">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Upcoming Deadlines</h3>
+                    <ul class="deadline-list">
+                        <li class="deadline-item">
+                            <span class="deadline-text">Sports Day Registration</span>
+                            <span class="deadline-date">Nov 18, 2023</span>
+                        </li>
+                        <li class="deadline-item">
+                            <span class="deadline-text">PTM Appointment Booking</span>
+                            <span class="deadline-date">Nov 25, 2023</span>
+                        </li>
+                        <li class="deadline-item">
+                            <span class="deadline-text">Alumni Event Registration</span>
+                            <span class="deadline-date">Dec 5, 2023</span>
+                        </li>
+                        <li class="deadline-item">
+                            <span class="deadline-text">Prize Giving Rehearsals</span>
+                            <span class="deadline-date">Dec 10, 2023</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Subscribe to Updates</h3>
+                    <p class="widget-text">Get notifications about school functions directly to your email.</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Your email address" required aria-label="Email address for subscription">
+                        <button type="submit" class="subscribe-btn">Subscribe</button>
+                    </form>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Quick Links</h3>
+                    <ul class="quick-links">
+                        <li><a href="calendar.html"><i class="fas fa-calendar-alt"></i> School Calendar</a></li>
+                        <li><a href="event-gallery.html"><i class="fas fa-images"></i> Event Galleries</a></li>
+                        <li><a href="volunteer.html"><i class="fas fa-handshake"></i> Volunteer Opportunities</a></li>
+                        <li><a href="facility-booking.html"><i class="fas fa-bookmark"></i> Facility Booking</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-title">School Functions</h3>
+                <p class="footer-text">Stay connected with all school activities and events. This page is regularly updated with the latest information.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Follow on Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Follow on Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Follow on Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Subscribe on YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Contacts</h3>
+                <ul class="contact-list">
+                    <li><i class="fas fa-phone"></i> Events Office: +256 414 123 456</li>
+                    <li><i class="fas fa-envelope"></i> events@stpetersnsambya.ac.ug</li>
+                    <li><i class="fas fa-map-marker-alt"></i> School Functions Office, Admin Block</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Event Submission</h3>
+                <p class="footer-text">Have an event to announce? Submit details for inclusion in our updates.</p>
+                <a href="submit-event.html" class="submit-event-btn">Submit an Event</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2023 St Peters SSS Nsambya. All rights reserved.</p>
+            <p class="accessibility-statement">Designed with accessibility in mind • WCAG 2.0 AA Compliant</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for dynamic content loading and interactivity -->
+    <script src="functions-updates.js"></script>
+</body>
+</html>-leadership { background: #009688; }
 
         .inductee-image {
             height: 160px;
