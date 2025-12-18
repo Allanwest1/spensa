@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Calendar - St Peters SSS Nsambya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #4CAF50;
+            --accent-color: #8BC34A;
+            --light-color: #f8fafc;
+            --dark-color: #0f172a;
+            --warning-color: #FF9800;
+            --danger-color: #F44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f5f7fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation - Mobile Optimized */
+        .header {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+        
+        .nav-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            min-height: 70px;
+        }
+        
+        .school-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            text-decoration: none;
+        }
+        
+        .school-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 4px 8px rgba(46, 125, 50, 0.2);
+        }
+        
+        .school-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .school-info h1 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+        
+        .school-info p {
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .student-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .notification-bell {
+            position: relative;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            color: var(--primary-color);
+        }
+        
+        .notification-count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--danger-color);
+            color: white;
+            font-size: 0.7rem;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
+        }
+        
+        .student-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            background-color: #e8f5e9;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 44px;
+            min-height: 44px;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+        
+        .profile-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        .mobile-toggle {
+            display: flex;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        
+        .main-container {
+            display: flex;
+            flex: 1;
+            width: 100%;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #1B5E20, #2E7D32);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 3px 0 15px rgba(46, 125, 50, 0.2);
+            z-index: 99;
+            transition: transform 0.3s ease;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            transform: translateX(-100%);
+        }
+        
+        .sidebar.active {
+            transform: translateX(0);
+        }
+        
+        .sidebar-header {
+            padding: 25px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .menu-section {
+            margin-bottom: 25px;
+        }
+        
+        .menu-title {
+            padding: 0 20px 10px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a5d6a7;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .menu-items {
+            list-style: none;
+        }
+        
+        .menu-item {
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            min-height: 50px;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .menu-item.active {
+            background-color: rgba(139, 195, 74, 0.2);
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .menu-item i {
+            width: 24px;
+            margin-right: 12px;
+            font-size: 1.1rem;
+            color: #ecf0f1;
+        }
+        
+        .menu-item span {
+            font-size: 1rem;
+            flex: 1;
+        }
+        
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            color: #a5d6a7;
+        }
+        
+        .close-sidebar {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 20px 15px;
+            overflow-y: auto;
+            width: 100%;
+            min-height: calc(100vh - 70px);
+        }
+        
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .content-header h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .sidebar-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            min-height: 44px;
+        }
+        
+        /* Calendar Specific Styles */
+        .calendar-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .current-month {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            min-width: 180px;
+            text-align: center;
+        }
+        
+        .view-toggle {
+            display: flex;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .view-btn {
+            padding: 8px 16px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .view-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .calendar-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #eee;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .calendar-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .calendar-day {
+            background: white;
+            padding: 15px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .calendar-day.other-month {
+            background: #f9f9f9;
+            color: #999;
+        }
+        
+        .calendar-day.today {
+            background: #e8f5e9;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .day-number {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .calendar-event {
+            background: var(--secondary-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .calendar-event.exam {
+            background: #F44336;
+        }
+        
+        .calendar-event.holiday {
+            background: #FF9800;
+        }
+        
+        .calendar-event.sports {
+            background: #2196F3;
+        }
+        
+        .calendar-event.academic {
+            background: #9C27B0;
+        }
+        
+        .upcoming-events {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+        
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .event-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .event-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+        }
+        
+        .event-day {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .event-month {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .event-details {
+            flex: 1;
+        }
+        
+        .event-details h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .event-details p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .event-time {
+            color: #666;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        
+        .add-event {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .add-event-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .add-event-form {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 98;
+            backdrop-filter: blur(3px);
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        @media (min-width: 992px) {
+            .sidebar {
+                position: relative;
+                transform: translateX(0);
+                height: auto;
+            }
+            
+            .close-sidebar {
+                display: none;
+            }
+            
+            .sidebar-toggle {
+                display: none;
+            }
+            
+            .overlay {
+                display: none !important;
+            }
+        }
+        
+        @media (max-width: 991px) {
+            .close-sidebar {
+                display: flex;
+            }
+            
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                font-size: 0.9rem;
+            }
+            
+            .calendar-day {
+                padding: 10px;
+                min-height: 80px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                font-size: 0.8rem;
+            }
+            
+            .calendar-day {
+                padding: 8px;
+                min-height: 70px;
+            }
+            
+            .calendar-header {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="school-brand">
+                <div class="school-logo">
+                    <img src="logo.png" alt="St Peters Logo">
+                </div>
+                <div class="school-info">
+                    <h1>St Peters SSS Nsambya</h1>
+                    <p>Fides Et Labor</p>
+                </div>
+            </a>
+            
+            <div class="student-actions">
+                <div class="notification-bell" id="notificationBell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="student-profile">
+                    <div class="profile-avatar">
+                        JS
+                    </div>
+                </div>
+            </div>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="main-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>School Calendar</h1>
+                <p>Events & Schedule</p>
+                <button class="close-sidebar" id="closeSidebar" aria-label="Close sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-content">
+                <div class="menu-section">
+                    <h3 class="menu-title">Main Navigation</h3>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="dashboard.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                                <i class="fas fa-home"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="grades.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Grades</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="classmates.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                                <i class="fas fa-users"></i>
+                                <span>Classmates</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="assignments.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Assignments</span>
+                            </a>
+                        </li>
+                        <li class="menu-item active">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>School Calendar</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-section">
+                    <h3 class="menu-title">Calendar Filters</h3>
+                    <ul class="menu-items">
+                        <li class="menu-item" onclick="filterCalendar('all')">
+                            <i class="fas fa-list"></i>
+                            <span>All Events</span>
+                        </li>
+                        <li class="menu-item" onclick="filterCalendar('academic')">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Academic</span>
+                        </li>
+                        <li class="menu-item" onclick="filterCalendar('sports')">
+                            <i class="fas fa-football-ball"></i>
+                            <span>Sports</span>
+                        </li>
+                        <li class="menu-item" onclick="filterCalendar('holidays')">
+                            <i class="fas fa-umbrella-beach"></i>
+                            <span>Holidays</span>
+                        </li>
+                        <li class="menu-item" onclick="filterCalendar('exams')">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Exams</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <p>© 2023 St Peters SSS Nsambya</p>
+                <p>Student Portal v2.1</p>
+            </div>
+        </div>
+        
+        <div class="overlay" id="overlay"></div>
+        
+        <div class="main-content">
+            <div class="content-header">
+                <h2>School Calendar & Events</h2>
+                <button class="sidebar-toggle" id="toggleSidebar">
+                    <i class="fas fa-bars"></i> Menu
+                </button>
+            </div>
+            
+            <div class="calendar-controls">
+                <div class="calendar-nav">
+                    <button class="nav-btn" onclick="changeMonth(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="current-month" id="currentMonth">May 2024</div>
+                    <button class="nav-btn" onclick="changeMonth(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="view-toggle">
+                    <button class="view-btn active" onclick="changeView('month')">Month</button>
+                    <button class="view-btn" onclick="changeView('week')">Week</button>
+                    <button class="view-btn" onclick="changeView('day')">Day</button>
+                </div>
+            </div>
+            
+            <div class="calendar-container">
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar headers -->
+                    <div class="calendar-header">Sun</div>
+                    <div class="calendar-header">Mon</div>
+                    <div class="calendar-header">Tue</div>
+                    <div class="calendar-header">Wed</div>
+                    <div class="calendar-header">Thu</div>
+                    <div class="calendar-header">Fri</div>
+                    <div class="calendar-header">Sat</div>
+                    
+                    <!-- Calendar days will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="upcoming-events">
+                <h3 style="color: var(--primary-color); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-bullhorn"></i> Upcoming Events This Week
+                </h3>
+                
+                <div class="events-list">
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">15</div>
+                            <div class="event-month">May</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Mathematics Mid-term Exam</h4>
+                            <p>Chapter 1-5, Room 7B, 9:00 AM - 11:00 AM</p>
+                        </div>
+                        <div class="event-time">9:00 AM</div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">16</div>
+                            <div class="event-month">May</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Career Guidance Day</h4>
+                            <p>University representatives visiting school</p>
+                        </div>
+                        <div class="event-time">10:00 AM</div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">17</div>
+                            <div class="event-month">May</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Inter-school Football Match</h4>
+                            <p>St Peters vs. St Mary's Kitende</p>
+                        </div>
+                        <div class="event-time">3:00 PM</div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">18</div>
+                            <div class="event-month">May</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Science Fair Exhibition</h4>
+                            <p>Student projects display in school hall</p>
+                        </div>
+                        <div class="event-time">All Day</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="add-event">
+                <h3 style="color: var(--primary-color); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-plus-circle"></i> Add Personal Event
+                </h3>
+                
+                <div class="add-event-form">
+                    <div class="form-group">
+                        <label for="eventTitle">Event Title:</label>
+                        <input type="text" id="eventTitle" placeholder="Study group, Meeting, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventDate">Date:</label>
+                        <input type="date" id="eventDate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventTime">Time:</label>
+                        <input type="time" id="eventTime">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventType">Event Type:</label>
+                        <select id="eventType">
+                            <option>Study Session</option>
+                            <option>Group Meeting</option>
+                            <option>Personal Reminder</option>
+                            <option>Assignment Due</option>
+                            <option>Exam Preparation</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="eventDescription">Description:</label>
+                        <textarea id="eventDescription" placeholder="Add event details..."></textarea>
+                    </div>
+                    
+                    <button class="form-group full-width" style="background: var(--primary-color); color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-size: 1rem; margin-top: 10px;" onclick="addPersonalEvent()">
+                        <i class="fas fa-calendar-plus"></i> Add to My Calendar
+                    </button>
+                </div>
+            </div>
+            
+            <div class="upcoming-events" style="margin-top: 25px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-info-circle"></i> Important Dates 2024
+                </h3>
+                
+                <div class="events-list">
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">1</div>
+                            <div class="event-month">Jun</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Term 2 Begins</h4>
+                            <p>Start of second academic term</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">15-20</div>
+                            <div class="event-month">Jul</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Mid-year Examinations</h4>
+                            <p>All subjects examination period</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">5</div>
+                            <div class="event-month">Aug</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Sports Day</h4>
+                            <p>Annual inter-house sports competition</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">1-15</div>
+                            <div class="event-month">Nov</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Final Examinations</h4>
+                            <p>End of year exams for all classes</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">20</div>
+                            <div class="event-month">Dec</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Prize Giving Day</h4>
+                            <p>Award ceremony and closing of school year</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Toggle sidebar on mobile
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const overlay = document.getElementById('overlay');
+        
+        toggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+        
+        closeSidebar.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        
+        overlay.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        
+        // Set active menu item
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                menuItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                if (window.innerWidth < 992) {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+        
+        // Calendar functionality
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+        
+        const monthNames = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        
+        // Sample events data
+        const events = [
+            { date: new Date(2024, 4, 15), title: "Math Exam", type: "exam" },
+            { date: new Date(2024, 4, 16), title: "Career Day", type: "academic" },
+            { date: new Date(2024, 4, 17), title: "Football Match", type: "sports" },
+            { date: new Date(2024, 4, 18), title: "Science Fair", type: "academic" },
+            { date: new Date(2024, 4, 20), title: "Parent-Teacher", type: "academic" },
+            { date: new Date(2024, 4, 25), title: "Holiday", type: "holiday" },
+            { date: new Date(2024, 4, 27), title: "Physics Test", type: "exam" }
+        ];
+        
+        function updateCalendar() {
+            const calendarGrid = document.getElementById('calendarGrid');
+            const currentMonthElement = document.getElementById('currentMonth');
+            
+            // Update month display
+            currentMonthElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+            
+            // Clear existing calendar days (keep headers)
+            while (calendarGrid.children.length > 7) {
+                calendarGrid.removeChild(calendarGrid.lastChild);
+            }
+            
+            // Get first day of month
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const lastDay = new Date(currentYear, currentMonth + 1, 0);
+            const startingDay = firstDay.getDay();
+            const monthLength = lastDay.getDate();
+            
+            // Get today's date
+            const today = new Date();
+            const isToday = (day) => {
+                return day === today.getDate() && 
+                       currentMonth === today.getMonth() && 
+                       currentYear === today.getFullYear();
+            };
+            
+            // Add empty cells for previous month
+            for (let i = 0; i < startingDay; i++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day other-month';
+                const prevMonthLastDay = new Date(currentYear, currentMonth, 0).getDate();
+                dayElement.innerHTML = `<div class="day-number">${prevMonthLastDay - startingDay + i + 1}</div>`;
+                calendarGrid.appendChild(dayElement);
+            }
+            
+            // Add current month days
+            for (let day = 1; day <= monthLength; day++) {
+                const dayElement = document.createElement('div');
+                const date = new Date(currentYear, currentMonth, day);
+                
+                // Check if today
+                if (isToday(day)) {
+                    dayElement.className = 'calendar-day today';
+                } else {
+                    dayElement.className = 'calendar-day';
+                }
+                
+                dayElement.innerHTML = `<div class="day-number">${day}</div>`;
+                
+                // Add events for this day
+                const dayEvents = events.filter(event => 
+                    event.date.getDate() === day && 
+                    event.date.getMonth() === currentMonth && 
+                    event.date.getFullYear() === currentYear
+                );
+                
+                dayEvents.forEach(event => {
+                    const eventElement = document.createElement('div');
+                    eventElement.className = `calendar-event ${event.type}`;
+                    eventElement.textContent = event.title;
+                    eventElement.onclick = () => showEventDetails(event);
+                    dayElement.appendChild(eventElement);
+                });
+                
+                calendarGrid.appendChild(dayElement);
+            }
+            
+            // Add empty cells for next month
+            const totalCells = 42; // 6 rows * 7 days
+            const remainingCells = totalCells - (startingDay + monthLength);
+            
+            for (let i = 1; i <= remainingCells; i++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day other-month';
+                dayElement.innerHTML = `<div class="day-number">${i}</div>`;
+                calendarGrid.appendChild(dayElement);
+            }
+        }
+        
+        function changeMonth(direction) {
+            currentMonth += direction;
+            
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            
+            updateCalendar();
+        }
+        
+        function changeView(view) {
+            const viewBtns = document.querySelectorAll('.view-btn');
+            viewBtns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            alert(`Switching to ${view} view`);
+            // In a real implementation, this would change the calendar display
+        }
+        
+        function filterCalendar(filter) {
+            alert(`Filtering calendar for ${filter} events`);
+            // In a real implementation, this would filter the events displayed
+        }
+        
+        function showEventDetails(event) {
+            alert(`Event: ${event.title}\nDate: ${event.date.toDateString()}\nType: ${event.type}`);
+        }
+        
+        function addPersonalEvent() {
+            const title = document.getElementById('eventTitle').value;
+            const date = document.getElementById('eventDate').value;
+            const time = document.getElementById('eventTime').value;
+            const type = document.getElementById('eventType').value;
+            const description = document.getElementById('eventDescription').value;
+            
+            if (title && date) {
+                alert(`Personal event added:\n\nTitle: ${title}\nDate: ${date}\nTime: ${time || 'All Day'}\nType: ${type}\nDescription: ${description || 'No description'}`);
+                
+                // Clear form
+                document.getElementById('eventTitle').value = '';
+                document.getElementById('eventDate').value = '';
+                document.getElementById('eventTime').value = '';
+                document.getElementById('eventDescription').value = '';
+            } else {
+                alert('Please fill in at least the event title and date.');
+            }
+        }
+        
+        // Initialize calendar
+        updateCalendar();
+        
+        // Mobile toggle for notifications
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            alert('Mobile menu would open here');
+        });
+        
+        // Notification bell click
+        document.getElementById('notificationBell').addEventListener('click', function() {
+            alert('Calendar notifications:\n1. Math exam tomorrow\n2. Career guidance day this week\n3. Football match on Friday');
+        });
+    </script>
+</body>
+</html>
